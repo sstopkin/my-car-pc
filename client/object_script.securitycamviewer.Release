@@ -1,0 +1,12 @@
+INPUT(
+./.build/MjpegClient.o
+./.build/getopt.o
+./.build/CameraViewerWidget.o
+./.build/MainWindow.o
+./.build/FlowLayout.o
+./.build/main.o
+./.build/FlowLayout.o
+./.build/moc_MjpegClient.o
+./.build/moc_CameraViewerWidget.o
+./.build/moc_MainWindow.o
+);
