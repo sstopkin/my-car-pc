@@ -3,7 +3,7 @@
 
 #include "MainWindow.h"
 
-#include "../common/getopt/getopt.h"
+//#include "../common/getopt/getopt.h"
 
 
 int main(int argc, char *argv[])
@@ -14,29 +14,29 @@ int main(int argc, char *argv[])
 //	app.addLibraryPath(pluginPath);
 	
 	// construct class from command line arguments
-	GetOpt opts(argc, argv);
+//	GetOpt opts(argc, argv);
 	
-	bool verbose = false;
-	opts.addSwitch("verbose", &verbose);
+//	bool verbose = false;
+//	opts.addSwitch("verbose", &verbose);
 
 	// add some switches
-	QString configFile;
-	opts.addOptionalOption('c',"config", &configFile, "viewer.ini");
+    QString configFile="config.ini";
+//	opts.addOptionalOption('c',"config", &configFile, "viewer.ini");
 	
 	// do the parsing and check for errors
-	if (!opts.parse()) 
-	{
-		fprintf(stderr,"Usage: %s [--verbose] [-c|--config configfile]\n", qPrintable(opts.appName()));
-		return 1;
-	}
+//	if (!opts.parse())
+//	{
+//		fprintf(stderr,"Usage: %s [--verbose] [-c|--config configfile]\n", qPrintable(opts.appName()));
+//		return 1;
+//	}
 	
-	if(configFile.isEmpty())
-		configFile = "viewer.ini";
+//	if(configFile.isEmpty())
+//		configFile = "viewer.ini";
 			
 		
 		
-	MainWindow viewer(configFile,verbose);
-	viewer.show();
+    MainWindow viewer(configFile);//configFile
+    viewer.show();
 
 	
 	return app.exec();
