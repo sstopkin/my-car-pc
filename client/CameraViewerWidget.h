@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QFileInfo>
 #include <QImage>
-#include <QTimer>
+#include <QTimedr>
 
 class MjpegClient;
 class EyeCounter;

@@ -8,10 +8,10 @@
 
 int main(int argc, char *argv[])
 {
-	QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-	QString pluginPath = QString("%1/plugins").arg(QDir::currentPath());
-	app.addLibraryPath(pluginPath);
+//	QString pluginPath = QString("%1/plugins").arg(QDir::currentPath());
+//	app.addLibraryPath(pluginPath);
 	
 	// construct class from command line arguments
 	GetOpt opts(argc, argv);

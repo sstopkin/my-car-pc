@@ -12,17 +12,19 @@ UI_DIR      = .build
 
 FORMS	      =
 
-HEADERS       = ../common/MjpegClient.h \
+HEADERS       = \
                 ../common/getopt/getopt.h \
                 CameraViewerWidget.h \
-		MainWindow.h
+		MainWindow.h \
+    MjpegClient.h
 
 
-SOURCES       = ../common/MjpegClient.cpp \
+SOURCES       = MjpegClient.cpp \
                 ../common/getopt/getopt.cpp \
                 CameraViewerWidget.cpp \
 		MainWindow.cpp \
-                main.cpp
+                main.cpp \
+    MjpegClient.cpp
 QT           += network
 
 CONFIG += debug
