@@ -9,17 +9,16 @@
 #include <QMessageBox>
 #include <QGridLayout>
 
-MainWindow::MainWindow(QString configFile, bool verbose, QWidget *parent)
+MainWindow::MainWindow(QString configFile,QWidget *parent)
     : QWidget(parent)
 {
-
     QGridLayout *layout = new QGridLayout(this);
     layout->setSpacing(0);
     //layout->setContentsMargins(0,0,0,0);
     layout->setContentsMargins(5,50,40,60);
 
-    if(verbose)
-        qDebug() << "Viewer: Reading settings from "<<configFile;
+//    if(verbose)
+//        qDebug() << "Viewer: Reading settings from "<<configFile;
 
 
     QSettings settings(configFile,QSettings::IniFormat);
@@ -39,8 +38,8 @@ MainWindow::MainWindow(QString configFile, bool verbose, QWidget *parent)
     QStringList part = size.split("x");
     m_frameSize = QSize(part[0].toInt(),part[1].toInt());
 
-    if(verbose)
-        qDebug() << "Viewer: Frame size: "<<m_frameSize.width()<<"x"<<m_frameSize.height();
+//    if(verbose)
+//        qDebug() << "Viewer: Frame size: "<<m_frameSize.width()<<"x"<<m_frameSize.height();
 
 #ifdef OPENCV_ENABLED
     bool enableEyeCounting = settings.value("eye-counting","true").toString() == "true";
@@ -72,11 +71,11 @@ MainWindow::MainWindow(QString configFile, bool verbose, QWidget *parent)
         qDebug() << "host or port or path is null in config";
     }
 
-    if(verbose)
-        qDebug() << "Viewer: Using default host"<<mainHost<<", port"<<mainPort<<", path"<<mainPath;
+//    if(verbose)
+//        qDebug() << "Viewer: Using default host"<<mainHost<<", port"<<mainPort<<", path"<<mainPath;
 
-    if(verbose)
-        qDebug() << "Viewer: Going to read"<<numCameras<<"cameras";
+//    if(verbose)
+//        qDebug() << "Viewer: Going to read"<<numCameras<<"cameras";
 
     if(!numCameras)
     {
@@ -86,8 +85,8 @@ MainWindow::MainWindow(QString configFile, bool verbose, QWidget *parent)
     }
 
     int fps = settings.value("fps",25).toInt();
-    if(verbose)
-        qDebug() << "Viewer: Running at"<<fps<<" frames per second";
+//    if(verbose)
+//        qDebug() << "Viewer: Running at"<<fps<<" frames per second";
 
     int row=0;
     int col=0;

@@ -11,7 +11,7 @@ class MainWindow : public QWidget
 {
 	Q_OBJECT
 public:
-	MainWindow(QString configFile="viewer.ini", bool verbose=false, QWidget *parent=0);
+    MainWindow(QString configFile="config.ini",QWidget *parent=0);
 	~MainWindow();
 	
 private slots:

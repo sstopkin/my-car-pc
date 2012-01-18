@@ -13,14 +13,14 @@ UI_DIR      = .build
 FORMS	      =
 
 HEADERS       = \
-                ../common/getopt/getopt.h \
+                #../common/getopt/getopt.h \
                 CameraViewerWidget.h \
 		MainWindow.h \
     MjpegClient.h
 
 
 SOURCES       = MjpegClient.cpp \
-                ../common/getopt/getopt.cpp \
+                #../common/getopt/getopt.cpp \
                 CameraViewerWidget.cpp \
 		MainWindow.cpp \
                 main.cpp
