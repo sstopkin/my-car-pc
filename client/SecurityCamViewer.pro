@@ -23,8 +23,7 @@ SOURCES       = MjpegClient.cpp \
                 ../common/getopt/getopt.cpp \
                 CameraViewerWidget.cpp \
 		MainWindow.cpp \
-                main.cpp \
-    MjpegClient.cpp
+                main.cpp
 QT           += network
 
 CONFIG += debug
