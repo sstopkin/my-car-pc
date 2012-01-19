@@ -60,6 +60,11 @@ bool MjpegClient::connectTo(const QString& host, int port, QString url, const QS
 	return true;
 }
 
+bool MjpegClient::disconnectTo(){
+    m_socket->disconnect();
+    qDebug("DISCONNECT");
+}
+
 void MjpegClient::connectionReady()
 {
 	char data[1024];
@@ -71,7 +76,7 @@ void MjpegClient::connectionReady()
 	
 	if(!m_user.isEmpty() || !m_pass.isEmpty())
 	{
-		//qDebug() << "Authorizing using username: "<<m_user;
+        qDebug() << "Authorizing using username: "<<m_user;
 		sprintf(data, "%s:%s",qPrintable(m_user),qPrintable(m_pass));
 		QByteArray auth = QByteArray((const char*)&data).toBase64();
 		sprintf(data, "Authorization: Basic %s\r\n",auth.constData());

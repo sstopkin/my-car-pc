@@ -23,6 +23,7 @@ public:
 	~MjpegClient();
 	
 	bool connectTo(const QString& host, int port=-1, QString url = "/", const QString& user="", const QString& pass="");
+    bool disconnectTo();
 	void exit();
 	QString errorString(){ return m_socket->errorString(); }
 	

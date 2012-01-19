@@ -108,6 +108,11 @@ MjpegClient * CameraViewerWidget::connectTo(QString host, int port, QString path
 	return m_client;	
 }
 
+MjpegClient * CameraViewerWidget::disconnectTo(){
+    m_client->disconnect();
+    return m_client;
+}
+
 	
 void CameraViewerWidget::paintEvent(QPaintEvent */*event*/)
 {
