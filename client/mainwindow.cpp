@@ -13,36 +13,9 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
-//    QGridLayout *layout = new QGridLayout(this);
-//    layout->setSpacing(0);
-//    //layout->setContentsMargins(0,0,0,0);
-//    layout->setContentsMargins(5,50,40,60);
-
-//    if(verbose)
-//        qDebug() << "Viewer: Reading settings from "<<configFile;
-
-
     QSettings settings(configFile,QSettings::IniFormat);
-
-    QString title = settings.value("window-title","Camera Viewer").toString();
+    QString title = settings.value("window/windowTitle","Title").toString();
     setWindowTitle(title);
-
-    if(!settings.value("window-pos").isNull())
-    {
-        QString pos = settings.value("window-pos","10x10").toString();
-        QStringList part = pos.split("x");
-        move(part[0].toInt(),part[1].toInt());
-    }
-
-    // Load the frame size (the "small" frame - the final frame size is computed automatically)
-    QString size = settings.value("frame-size","640x480").toString();
-    QStringList part = size.split("x");
-    m_frameSize = QSize(part[0].toInt(),part[1].toInt());
-
-//    if(verbose)
-//        qDebug() << "Viewer: Frame size: "<<m_frameSize.width()<<"x"<<m_frameSize.height();
 
 #ifdef OPENCV_ENABLED
     bool enableEyeCounting = settings.value("eye-counting","true").toString() == "true";
@@ -57,16 +30,10 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
     }
 #endif
 
-    // Setup all the threads and create the labels to view the images
-    int numCameras = settings.value("num-cams",0).toInt();
-
-    // Load the defaults for use in the cameras section below
-    //    QString mainHost = settings.value("host","localhost").toString();
-    //    int     mainPort = settings.value("port",80).toInt();
-    //    QString mainPath = settings.value("path","/").toString();
-    QString mainHost = "alt-server.dyndns.org";
-    int     mainPort = 2000;
-    QString mainPath = "/?action=stream";
+    //Load the defaults for use in the cameras section below
+    QString mainHost = settings.value("network/host","localhost").toString();
+    int     mainPort = settings.value("network/port",80).toInt();
+    QString mainPath = settings.value("network/path","/").toString();
     if((! settings.value("host").isNull() ||
         ! settings.value("port").isNull() ||
         ! settings.value("path").isNull()))
@@ -74,22 +41,8 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
         qDebug() << "host or port or path is null in config";
     }
 
-//    if(verbose)
-//        qDebug() << "Viewer: Using default host"<<mainHost<<", port"<<mainPort<<", path"<<mainPath;
-
-//    if(verbose)
-//        qDebug() << "Viewer: Going to read"<<numCameras<<"cameras";
-
-    if(!numCameras)
-    {
-        QMessageBox::critical(this,"No Cameras","Sorry, no cameras were found in viewer.ini");
-        QTimer::singleShot(0,this,SLOT(close()));
-        return;
-    }
-
-    int fps = settings.value("fps",25).toInt();
-//    if(verbose)
-//        qDebug() << "Viewer: Running at"<<fps<<" frames per second";
+    int fps = settings.value("cam/fps",25).toInt();
+    qDebug() << "Viewer: Running at"<<fps<<" frames per second";
 
     int row=0;
     int col=0;
@@ -111,7 +64,6 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
     viewer->connectTo(host,port,path,user,pass);
     viewer->setDesiredSize(m_frameSize);
     viewer->setLiveFps(fps);
-
     ui->gridLayout->addWidget(viewer,row,col);
 }
 

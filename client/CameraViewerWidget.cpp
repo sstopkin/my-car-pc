@@ -25,7 +25,7 @@ CameraViewerWidget::CameraViewerWidget(QWidget *parent)
 	#endif
 {
 	setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showCustomContextMenu(QPoint)));
+//	connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showCustomContextMenu(QPoint)));
 	
 	connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(update()));
 	
