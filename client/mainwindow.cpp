@@ -13,6 +13,10 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
 {
     ui->setupUi(this);
 
+    readConfig(configFile);
+}
+
+void MainWindow::readConfig(QString configFile){
     QSettings settings(configFile,QSettings::IniFormat);
     QString title = settings.value("window/windowTitle","Title").toString();
     setWindowTitle(title);
@@ -31,43 +35,35 @@ MainWindow::MainWindow(QString configFile,QWidget *parent) :
 #endif
 
     //Load the defaults for use in the cameras section below
-    QString mainHost = settings.value("network/host","localhost").toString();
-    int     mainPort = settings.value("network/port",80).toInt();
-    QString mainPath = settings.value("network/path","/").toString();
-    if((! settings.value("host").isNull() ||
-        ! settings.value("port").isNull() ||
-        ! settings.value("path").isNull()))
+    host = settings.value("network/host","localhost").toString();
+    port = settings.value("network/port",80).toInt();
+    path = settings.value("network/path","/").toString();
+    user = settings.value("network/user","").toString();
+    pass = settings.value("network/pass","").toString();
+
+    if((! settings.value("network/host").isNull() ||
+        ! settings.value("network/port").isNull() ||
+        ! settings.value("network/path").isNull() ||
+        ! settings.value("network/login").isNull() ||
+        ! settings.value("network/pass").isNull()))
     {
         qDebug() << "host or port or path is null in config";
     }
 
-    int fps = settings.value("cam/fps",25).toInt();
+    fps = settings.value("cam/fps",25).toInt();
     qDebug() << "Viewer: Running at"<<fps<<" frames per second";
-
-    int row=0;
-    int col=0;
-    int i=0;
-    QString group = QString("cam%1").arg(i);
-
-    QString hostKey = QString("%1/host").arg(group);
-    QString portKey = QString("%1/port").arg(group);
-    QString pathKey = QString("%1/path").arg(group);
-
-    QString host = settings.value(hostKey,mainHost).toString();
-    int     port = settings.value(portKey,mainPort).toInt();
-    QString path = settings.value(pathKey,mainPath).toString();
-
-    QString user = settings.value(QString("%1/user").arg(group),"").toString();
-    QString pass = settings.value(QString("%1/pass").arg(group),"").toString();
-
-    CameraViewerWidget * viewer = new CameraViewerWidget(this);
-    viewer->connectTo(host,port,path,user,pass);
-    viewer->setDesiredSize(m_frameSize);
-    viewer->setLiveFps(fps);
-    ui->gridLayout->addWidget(viewer,row,col);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    CameraViewerWidget * viewer = new CameraViewerWidget(this);
+    viewer->connectTo(host,port,path,user,pass);
+    viewer->setDesiredSize(m_frameSize);
+    viewer->setLiveFps(fps);
+    ui->gridLayout->addWidget(viewer);
 }

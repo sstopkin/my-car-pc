@@ -31,6 +31,7 @@ public slots:
 	void setDesiredSize(QSize);
 	
 	MjpegClient * connectTo(QString host, int port=80, QString path="/", const QString& user="", const QString& pass="");
+    MjpegClient * disconnectTo();
 	
  	void setPlaybackEnabled(bool flag) {  m_playbackEnabled = flag; }
  	void setDailyRecordingPath(const QString& path) { m_dailyRecordingPath = path; }
