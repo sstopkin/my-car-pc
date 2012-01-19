@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "VideoWindow.h"
 
 #include "MjpegClient.h"
 #include "CameraViewerWidget.h"
@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include <QGridLayout>
 
-MainWindow::MainWindow(QString configFile,QWidget *parent)
+VideoWindow::VideoWindow(QString configFile,QWidget *parent)
     : QWidget(parent)
 {
     QGridLayout *layout = new QGridLayout(this);
@@ -110,19 +110,11 @@ MainWindow::MainWindow(QString configFile,QWidget *parent)
     viewer->setLiveFps(fps);
 
     layout->addWidget(viewer,row,col);
-}
-
-MainWindow::~MainWindow()
-{
 
 }
 
-void MainWindow::applySize(int x, int y)
+VideoWindow::~VideoWindow()
 {
-    int xpx = x * m_frameSize.width();
-    int ypx = y * m_frameSize.height();
-    m_rows = x;
-    m_cols = y;
-    resize(xpx,ypx);
+
 }
 

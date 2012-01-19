@@ -1,8 +1,7 @@
 #include <QApplication>
 #include <QDir>
 
-#include "MainWindow.h"
-
+#include "mainwindow.h"
 //#include "../common/getopt/getopt.h"
 
 
@@ -34,9 +33,10 @@ int main(int argc, char *argv[])
 //		configFile = "viewer.ini";
 			
 		
-		
-    MainWindow viewer(configFile);//configFile
-    viewer.show();
+    MainWindow gui(configFile);
+    gui.show();
+//    VideoWindow viewer(configFile);//configFile
+//    viewer.show();
 
 	
 	return app.exec();

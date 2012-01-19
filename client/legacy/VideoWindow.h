@@ -1,5 +1,5 @@
-#ifndef MainWindow_H
-#define MainWindow_H
+#ifndef VideoWindow_H
+#define VideoWindow_H
 
 class MjpegClient;
 
@@ -7,19 +7,18 @@ class MjpegClient;
 #include <QLabel>
 #include <QTimer>
 
-class MainWindow : public QWidget
+class VideoWindow : public QWidget
 {
 	Q_OBJECT
 public:
-    MainWindow(QString configFile="config.ini",QWidget *parent=0);
-	~MainWindow();
+    VideoWindow(QString configFile="config.ini",QWidget *parent=0);
+	~VideoWindow();
 	
 private slots:
 /*	void newImage(QImage);
 	void updateFrames();*/
 	
 private:
-	void applySize(int x, int y);
 	int m_rows;
 	int m_cols;
 	QSize m_frameSize;
