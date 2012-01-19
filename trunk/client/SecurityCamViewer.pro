@@ -10,20 +10,21 @@ OBJECTS_DIR = .build
 RCC_DIR     = .build
 UI_DIR      = .build
 
-FORMS	      =
+FORMS	      = \
+    mainwindow.ui
 
 HEADERS       = \
                 #../common/getopt/getopt.h \
                 CameraViewerWidget.h \
-		MainWindow.h \
-    MjpegClient.h
+    MjpegClient.h \
+    mainwindow.h
 
 
 SOURCES       = MjpegClient.cpp \
                 #../common/getopt/getopt.cpp \
                 CameraViewerWidget.cpp \
-		MainWindow.cpp \
-                main.cpp
+                main.cpp \
+    mainwindow.cpp
 QT           += network
 
 CONFIG += debug
