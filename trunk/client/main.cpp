@@ -35,9 +35,6 @@ int main(int argc, char *argv[])
 		
     MainWindow gui(configFile);
     gui.show();
-//    VideoWindow viewer(configFile);//configFile
-//    viewer.show();
-
 	
 	return app.exec();
 }
