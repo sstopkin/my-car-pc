@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    tray apptray();
     ConfigFile cfg("config.ini");
     MainWindow gui(&cfg);
     gui.show();
