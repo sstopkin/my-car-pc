@@ -25,5 +25,4 @@ ConfigFile::ConfigFile(QString configFileName)
 
     fps = settings.value("cam/fps",25).toInt();
     qDebug() << "Viewer: Running at"<<fps<<" frames per second";
-
 }

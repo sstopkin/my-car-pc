@@ -7,7 +7,7 @@
 CameraViewerWidget::CameraViewerWidget(QWidget *parent)
 	: QWidget(parent)
 	, m_client(0)
-	, m_desiredSize(320,240)
+//    , m_desiredSize(100,100)
     , m_liveFps(25)
 {
 
@@ -40,14 +40,14 @@ void CameraViewerWidget::setLiveFps(double fps)
 
 void CameraViewerWidget::setDesiredSize(QSize size)
 {
-	if(m_client)
-		m_client->setAutoResize(size);
-	m_desiredSize = size;
+    if(m_client)
+        m_client->setAutoResize(size);
+    m_desiredSize = size;
 }
 
 QSize CameraViewerWidget::sizeHint() const
 {
-	return m_desiredSize;
+    return m_desiredSize;
 }
 	
 MjpegClient * CameraViewerWidget::connectTo(QString host, int port, QString path, const QString& user, const QString& pass)
@@ -64,7 +64,7 @@ MjpegClient * CameraViewerWidget::connectTo(QString host, int port, QString path
 	m_client->setAutoResize(rect().size());
 	// TODO catch resize event and update autoresize accordingly
 	m_client->start();
-	
+
 	connect(m_client, SIGNAL(newImage(QImage)), this, SLOT(newImage(QImage)));
 	
 	return m_client;	
@@ -88,7 +88,7 @@ void CameraViewerWidget::paintEvent(QPaintEvent */*event*/)
 	{
  		painter.fillRect(rect(),Qt::black);
  		painter.setPen(Qt::white);
-        painter.drawText(5,15,QString("Waiting for video from ...").arg(m_client->host()).arg(m_client->port()));//%1:%2
+        painter.drawText(5,15,QString("Waiting for video from %1:%2...").arg(m_client->host()).arg(m_client->port()));
 	}
 }
 

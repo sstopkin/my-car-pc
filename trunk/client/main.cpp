@@ -1,19 +1,29 @@
 #include <QApplication>
 #include <QDir>
+#include "QMessageBox"
+#include "QtGui"
 
 #include "mainwindow.h"
 #include "configfile.h"
-
+#include "tray.h"
 
 int main(int argc, char *argv[])
 {
+    Q_INIT_RESOURCE(systray);
+
     QApplication app(argc, argv);
 
-//    QString configFileName="config.ini";
+    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+        QMessageBox::critical(0, QObject::tr("Systray"),
+                              QObject::tr("I couldn't detect any system tray "
+                                          "on this system."));
+        return 1;
+    }
+
     ConfigFile cfg("config.ini");
     MainWindow gui(&cfg);
     gui.show();
-	
+    //QApplication::setQuitOnLastWindowClosed(false)
 	return app.exec();
 }
 /*

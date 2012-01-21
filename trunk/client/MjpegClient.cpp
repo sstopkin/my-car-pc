@@ -23,6 +23,7 @@ MjpegClient::MjpegClient(QObject *parent)
 	m_label->show();
 #endif
 }
+
 MjpegClient::~MjpegClient()
 {
 }
