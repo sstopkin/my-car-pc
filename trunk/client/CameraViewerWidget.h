@@ -19,10 +19,6 @@ public:
 	// QWidget::
 	virtual QSize sizeHint () const;
 	
- 	bool playbackEnabled() { return m_playbackEnabled; }
- 	QString dailyRecordingPath() { return m_dailyRecordingPath; }
- 	double playbackFps() { return m_playbackFps; }
-	
 	double liveFps() { return m_liveFps; }
 
 	
@@ -33,12 +29,7 @@ public slots:
 	MjpegClient * connectTo(QString host, int port=80, QString path="/", const QString& user="", const QString& pass="");
     MjpegClient * disconnectTo();
 	
- 	void setPlaybackEnabled(bool flag) {  m_playbackEnabled = flag; }
- 	void setDailyRecordingPath(const QString& path) { m_dailyRecordingPath = path; }
- 	void setPlaybackFps(double d) { m_playbackFps = d; }
 	void setLiveFps(double);
-	
-	void enableEyeDetection(bool highlightEyes=true, QString logFile="eye-counting.csv");
 	
 protected:
 	void paintEvent(QPaintEvent *event);
@@ -46,8 +37,6 @@ protected:
 
 private slots:
 	void newImage(QImage);
-    //void showCustomContextMenu(const QPoint&pos);
-    //void showPlaybackDialog();
 
 private:
 	QImage m_currentImage;
@@ -61,13 +50,6 @@ private:
  	double m_playbackFps;
 	
 	double m_liveFps;
-	
-	#ifdef OPENCV_ENABLED
-	EyeCounter *m_counter;
-	QString m_logFile;
-	QFile *m_logFilePtr;
-	bool m_highlightEyes;
-	#endif
 };
 
 #endif //CameraViewerWidget_H
