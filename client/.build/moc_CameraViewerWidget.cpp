@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CameraViewerWidget.h'
 **
-** Created: Thu 19. Jan 22:10:56 2012
+** Created: Sat 21. Jan 19:33:01 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_CameraViewerWidget[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,14 +38,8 @@ static const uint qt_meta_data_CameraViewerWidget[] = {
      242,  232,   42,   19, 0x2a,
      270,  265,   42,   19, 0x2a,
      289,   19,   42,   19, 0x0a,
-     309,  304,   19,   19, 0x0a,
-     339,  334,   19,   19, 0x0a,
-     372,  370,   19,   19, 0x0a,
-     395,   19,   19,   19, 0x0a,
-     436,  414,   19,   19, 0x0a,
-     483,  469,   19,   19, 0x2a,
-     508,   19,   19,   19, 0x2a,
-     529,   19,   19,   19, 0x08,
+     304,   19,   19,   19, 0x0a,
+     323,   19,   19,   19, 0x08,
 
        0        // eod
 };
@@ -59,13 +53,7 @@ static const char qt_meta_stringdata_CameraViewerWidget[] = {
     "host,port,path\0connectTo(QString,int,QString)\0"
     "host,port\0connectTo(QString,int)\0host\0"
     "connectTo(QString)\0disconnectTo()\0"
-    "flag\0setPlaybackEnabled(bool)\0path\0"
-    "setDailyRecordingPath(QString)\0d\0"
-    "setPlaybackFps(double)\0setLiveFps(double)\0"
-    "highlightEyes,logFile\0"
-    "enableEyeDetection(bool,QString)\0"
-    "highlightEyes\0enableEyeDetection(bool)\0"
-    "enableEyeDetection()\0newImage(QImage)\0"
+    "setLiveFps(double)\0newImage(QImage)\0"
 };
 
 void CameraViewerWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -87,14 +75,8 @@ void CameraViewerWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
             if (_a[0]) *reinterpret_cast< MjpegClient**>(_a[0]) = _r; }  break;
         case 6: { MjpegClient* _r = _t->disconnectTo();
             if (_a[0]) *reinterpret_cast< MjpegClient**>(_a[0]) = _r; }  break;
-        case 7: _t->setPlaybackEnabled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 8: _t->setDailyRecordingPath((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 9: _t->setPlaybackFps((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 10: _t->setLiveFps((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 11: _t->enableEyeDetection((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 12: _t->enableEyeDetection((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 13: _t->enableEyeDetection(); break;
-        case 14: _t->newImage((*reinterpret_cast< QImage(*)>(_a[1]))); break;
+        case 7: _t->setLiveFps((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 8: _t->newImage((*reinterpret_cast< QImage(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -132,9 +114,9 @@ int CameraViewerWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 9;
     }
     return _id;
 }
