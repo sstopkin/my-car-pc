@@ -7,7 +7,7 @@ netw::netw()//QString host,int port,int timeout
 
 }
 
-int netw::conn(){
+void netw::conn(){
     QString     serverName  = "alt-server.dyndns.org";
     quint16     serverPort  = 2001;
     const int   Timeout     = 5 * 1000;
@@ -19,7 +19,7 @@ int netw::conn(){
 
         qDebug()<< "[1] "   << socket.error()
                 << ": "     << socket.errorString();
-        return 1;
+        qDebug("1");
     }
 
 
@@ -27,7 +27,7 @@ int netw::conn(){
 
         qDebug()<< "[2] "   << socket.error()
                 << ": "     << socket.errorString();
-        return 2;
+        qDebug("2");
     }
 
 

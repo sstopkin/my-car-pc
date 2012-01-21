@@ -15,15 +15,20 @@ HEADERS       = \
     MjpegClient.h \
     mainwindow.h \
     netw.h \
-    configfile.h
-
+    configfile.h \
+    tray.h \
+    tray.h
 
 SOURCES       = MjpegClient.cpp \
                 CameraViewerWidget.cpp \
                 main.cpp \
     mainwindow.cpp \
     netw.cpp \
-    configfile.cpp
+    configfile.cpp \
+    tray.cpp
 QT           += network
-
+           += xml svg
 CONFIG += debug
+
+RESOURCES += \
+    systray.qrc

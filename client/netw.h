@@ -7,7 +7,7 @@ class netw
 {
 public:
     netw();//QString host,int port,int timeout
-    int conn();
+    void conn();
 };
 
 #endif // NETW_H
