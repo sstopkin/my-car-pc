@@ -25,14 +25,14 @@ SOURCES       = MjpegClient.cpp \
     netw.cpp \
     configfile.cpp \
     joystick.cpp
-QT           += network xml svg
+QT           += network
 CONFIG += debug
 
-RESOURCES += \
-    systray.qrc
+#RESOURCES += \
+#    systray.qrc
 
-INCLUDEPATH += ../SDL-1.2.14/lib
-LIBS        += ../SDL-1.2.14/lib/libSDL.dll.a
-LIBS        += ../SDL-1.2.14/lib/libSDLmain.a
+INCLUDEPATH += ../SDL-1.2.15/lib
+LIBS        += ../SDL-1.2.15/lib/libSDL.dll.a
+LIBS        += ../SDL-1.2.15/lib/libSDLmain.a
 #LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDL.dll.a
 #LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDLmain.a
