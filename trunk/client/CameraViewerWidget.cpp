@@ -65,7 +65,7 @@ MjpegClient * CameraViewerWidget::connectTo(QString host, int port, QString path
 	// TODO catch resize event and update autoresize accordingly
 	m_client->start();
 	connect(m_client, SIGNAL(newImage(QImage)), this, SLOT(newImage(QImage)));
-	
+
 	return m_client;	
 }
 

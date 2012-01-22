@@ -30,6 +30,8 @@ CONFIG += debug
 
 #RESOURCES += \
 #    systray.qrc
+#INCLUDEPATH += . ../common
+#DEPENDPATH  += . ../common
 
 INCLUDEPATH += ../SDL-1.2.15/lib
 LIBS        += ../SDL-1.2.15/lib/libSDL.dll.a

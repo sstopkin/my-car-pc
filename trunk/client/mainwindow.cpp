@@ -29,7 +29,6 @@ void MainWindow::on_pushButton_clicked()
 
 
 viewer = new CameraViewerWidget(this);
-
     viewer->connectTo(cfg->host,cfg->portCam,cfg->path,cfg->user,cfg->pass);
     viewer->setDesiredSize(m_frameSize);
     viewer->setLiveFps(cfg->fps);

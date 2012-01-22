@@ -2,7 +2,7 @@
 #define JOYSTICK_H
 
 #include <QObject>
-#include "../SDL-1.2.15/include/SDL/SDL_joystick.h"
+#include "SDL/SDL_joystick.h"
 #include <QThread>
 #include <QStringList>
 

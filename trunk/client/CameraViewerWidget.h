@@ -33,7 +33,6 @@ public slots:
 protected:
 	void paintEvent(QPaintEvent *event);
 
-
 private slots:
 	void newImage(QImage);
 
