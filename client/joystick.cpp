@@ -1,6 +1,6 @@
 #include "joystick.h"
 
-#include "../SDL-1.2.15/include/SDL/SDL.h"
+#include "SDL/SDL.h"
 
 JoystickAdapter::JoystickAdapter(QObject *parent) :
     QObject(parent),
