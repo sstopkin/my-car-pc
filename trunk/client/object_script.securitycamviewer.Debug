@@ -5,10 +5,10 @@ INPUT(
 ./.build/mainwindow.o
 ./.build/netw.o
 ./.build/configfile.o
-./.build/tray.o
+./.build/joystick.o
 ./.build/moc_CameraViewerWidget.o
 ./.build/moc_MjpegClient.o
 ./.build/moc_mainwindow.o
-./.build/moc_tray.o
+./.build/moc_joystick.o
 ./.build/qrc_systray.o
 );

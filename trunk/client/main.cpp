@@ -1,11 +1,6 @@
 #include <QApplication>
-#include <QDir>
-#include "QMessageBox"
-#include "QtGui"
-
 #include "mainwindow.h"
 #include "configfile.h"
-#include "tray.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,14 +8,6 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-        QMessageBox::critical(0, QObject::tr("Systray"),
-                              QObject::tr("I couldn't detect any system tray "
-                                          "on this system."));
-        return 1;
-    }
-
-    tray apptray();
     ConfigFile cfg("config.ini");
     MainWindow gui(&cfg);
     gui.show();

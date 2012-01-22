@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CameraViewerWidget.h'
 **
-** Created: Sat 21. Jan 23:01:33 2012
+** Created: Sun 22. Jan 21:42:11 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,8 +34,8 @@ static const uint qt_meta_data_CameraViewerWidget[] = {
       20,   19,   19,   19, 0x0a,
       80,   55,   42,   19, 0x0a,
      127,   19,   42,   19, 0x0a,
-     142,   19,   19,   19, 0x0a,
-     161,   19,   19,   19, 0x08,
+     134,   19,   19,   19, 0x0a,
+     153,   19,   19,   19, 0x08,
 
        0        // eod
 };
@@ -44,8 +44,7 @@ static const char qt_meta_stringdata_CameraViewerWidget[] = {
     "CameraViewerWidget\0\0setDesiredSize(QSize)\0"
     "MjpegClient*\0host,port,path,user,pass\0"
     "connectTo(QString,int,QString,QString,QString)\0"
-    "disconnectTo()\0setLiveFps(double)\0"
-    "newImage(QImage)\0"
+    "exit()\0setLiveFps(double)\0newImage(QImage)\0"
 };
 
 void CameraViewerWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -57,7 +56,7 @@ void CameraViewerWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         case 0: _t->setDesiredSize((*reinterpret_cast< QSize(*)>(_a[1]))); break;
         case 1: { MjpegClient* _r = _t->connectTo((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4])),(*reinterpret_cast< const QString(*)>(_a[5])));
             if (_a[0]) *reinterpret_cast< MjpegClient**>(_a[0]) = _r; }  break;
-        case 2: { MjpegClient* _r = _t->disconnectTo();
+        case 2: { MjpegClient* _r = _t->exit();
             if (_a[0]) *reinterpret_cast< MjpegClient**>(_a[0]) = _r; }  break;
         case 3: _t->setLiveFps((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 4: _t->newImage((*reinterpret_cast< QImage(*)>(_a[1]))); break;

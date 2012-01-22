@@ -204,3 +204,13 @@ void MainWindow::ballSetup(int id, int stateX, int stateY)
 }
 
 #include "moc_mainwindow.cpp"
+
+void MainWindow::on_rescanPushButton_clicked()
+{
+
+}
+
+void MainWindow::on_connectPushButton_clicked()
+{
+
+}

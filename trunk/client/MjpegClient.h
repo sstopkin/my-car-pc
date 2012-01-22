@@ -1,5 +1,8 @@
 #ifndef MjpegClient_H
 #define MjpegClient_H
+#include <QCoreApplication>
+
+#include <QTimer>
 
 #include <QObject>
 #include <QByteArray>
@@ -23,7 +26,6 @@ public:
 	~MjpegClient();
 	
 	bool connectTo(const QString& host, int port=-1, QString url = "/", const QString& user="", const QString& pass="");
-    bool disconnectTo();
 	void exit();
 	QString errorString(){ return m_socket->errorString(); }
 	
@@ -45,7 +47,7 @@ public:
 	
 	int pollingFps() { return m_pollFps; }
 	void setPollingFps(int fps) { m_pollFps = fps; }
-	
+
 signals:
 	void socketDisconnected();
 	void socketError(QAbstractSocket::SocketError);
@@ -68,7 +70,7 @@ private slots:
 
 private:
 	void log(const QString&);
-	QTcpSocket *m_socket;
+    QTcpSocket *m_socket;
 	
 	QString m_boundary;
 	bool m_firstBlock;
@@ -76,7 +78,7 @@ private:
 	QByteArray m_dataBlock;
 	
 	QSize m_autoResize;
-	bool m_autoReconnect;
+    bool m_autoReconnect;
 	
 	QString m_host;
 	int m_port;

@@ -1,8 +1,6 @@
 #include "MjpegClient.h"
 
-#include <QCoreApplication>
 
-#include <QTimer>
 
 MjpegClient::MjpegClient(QObject *parent) 
 	: QThread(parent)
@@ -16,6 +14,7 @@ MjpegClient::MjpegClient(QObject *parent)
 	, m_pollMode(false)
     , m_pollFps(25)
 {
+    m_autoReconnect=true;
 #ifdef MJPEG_TEST
 	m_label = new QLabel();
 	m_label->setWindowTitle("MJPEG Test");
@@ -30,6 +29,7 @@ MjpegClient::~MjpegClient()
   
 bool MjpegClient::connectTo(const QString& host, int port, QString url, const QString& user, const QString& pass)
 {
+
 	if(url.isEmpty())
 		url = "/";
 		
@@ -59,11 +59,6 @@ bool MjpegClient::connectTo(const QString& host, int port, QString url, const QS
 	m_socket->setReadBufferSize(1024 * 1024);
 	
 	return true;
-}
-
-bool MjpegClient::disconnectTo(){
-    m_socket->disconnect();
-    qDebug("DISCONNECT");
 }
 
 void MjpegClient::connectionReady()
@@ -128,129 +123,129 @@ void MjpegClient::processBlock()
 {
 	if(m_boundary.isEmpty())
 	{
-		// still waiting for boundary string defenition, check for content type in data block
-		char * ctypeString = 0;
-		if(m_dataBlock.contains("Content-Type:"))
-		{
-			ctypeString = "Content-Type:";
-		}
-		else
-		if(m_dataBlock.contains("content-type:"))
-		{
-			// allow for buggy servers (some IP cameras - trendnet, I'm looking at you!) 
-			// sometimes dont use proper case in their headers.
-			ctypeString = "content-type:";
-		}
-		
-		if(ctypeString)
-		{
-			int ctypeIdx = m_dataBlock.indexOf(ctypeString);
-			if(ctypeIdx < 0)
-			{
-				qDebug() << "Error: Can't find content-type index in data block, exiting.";
-				exit();
-				return;
-			}
-			
-			static QString boundaryMarker = "boundary=";
-			int boundaryStartIdx = m_dataBlock.indexOf(boundaryMarker,ctypeIdx);
-			if(boundaryStartIdx < 0)
-			{
-				qDebug() << "Error: Can't find boundary index after the first content-type index in data block, exiting:"<<m_dataBlock;
-				exit();
-				return;
-			}
-			
-			int eolIdx = m_dataBlock.indexOf("\n",boundaryStartIdx);
-			int pos = boundaryStartIdx + boundaryMarker.length();
-			m_boundary = m_dataBlock.mid(pos, eolIdx - pos);
-			m_boundary.replace("\r","");
-// 			qDebug() << "processBlock(): m_boundary:"<<m_boundary<<", pos:"<<pos<<", eolIdx:"<<eolIdx;
-		}
-	}
-	else
-	{
-		// we have the boundary string defenition, check for the boundary string in the data block.
-		// If found, grab the data from the start of the block up to and including the boundary, leaving any data after the boundary in the block.
-		// What we then have to process could look:
-		// Content-Type.....\r\n(data)--(boundary)
-		
-		// If its the first block, we wait for the boundary, but discard it since the first block is the one that contains the server headers
-		// like the boundary definition, Server:, Connection:, etc.
-		int idx = m_dataBlock.indexOf(m_boundary);
-		
- 		while(idx > 0)
- 		{
-			QByteArray block = m_dataBlock.left(idx);
-			
-			int blockAndBoundaryLength = idx + m_boundary.length();
-			m_dataBlock.remove(0,blockAndBoundaryLength);
-			//qDebug() << "processBlock(): block length:"<<block.length()<<", blockAndBoundaryLength:"<<blockAndBoundaryLength;
-			
-			if(m_firstBlock)
-			{
-				//QString string = block;
-				//qDebug() << "processBlock(): Discarding block since first block flag is true. Dump of block:\n"<<string;
-				m_firstBlock = false;
-			}
-			else
-			{
-				static const char * eol1 = "\n\n";
-				static const char * eol2 = "\r\n\r\n";
-				int headerLength = 0;
-				if(block.contains(eol2))
-					headerLength = block.indexOf(eol2,0) + 4;
-				else
-				if(block.contains(eol1))
-					headerLength = block.indexOf(eol1,0) + 2;
-				
-				if(headerLength)
-				{
-					QString header = block.left(headerLength);
-					
-					block.remove(0,headerLength);
-					
-					// Block should now be just data
-					qDebug() << "processBlock(): block length:"<<block.length()<<", headerLength:"<<headerLength<<", header:"<<header;
-					
-					if(block.length() > 0)
-					{
-					
-						QImage frame = QImage::fromData(block);
-						if(m_flipImage)
-							frame = frame.mirrored(true,true);
-						
-						
-						if(!frame.isNull())
-						{
- 							qDebug() << "processBlock(): New image received, original size:"<<frame.size()<<", bytes:"<<block.length();
-							
-							if(m_autoResize.width()>0 && m_autoResize.height()>0 && 
-							   m_autoResize != frame.size())
-								frame = frame.scaled(m_autoResize);
-						
-							
-// 							qDebug() << "processBlock(): Emitting new image, size:"<<frame.size();
-							emit newImage(frame);
-						}	
-						
-						#ifdef MJPEG_TEST
-						QPixmap pix = QPixmap::fromImage(frame);
-						m_label->setPixmap(pix);
-						m_label->resize(pix.width(),pix.height());
-						#endif
-					}
-				}
+        // still waiting for boundary string defenition, check for content type in data block
+        char * ctypeString = 0;
+        if(m_dataBlock.contains("Content-Type:"))
+        {
+            ctypeString = "Content-Type:";
+        }
+        else
+            if(m_dataBlock.contains("content-type:"))
+            {
+                // allow for buggy servers (some IP cameras - trendnet, I'm looking at you!)
+                // sometimes dont use proper case in their headers.
+                ctypeString = "content-type:";
+            }
 
-			}
-			
-// 			// check for another boundary string in the data before exiting from processBlock()
- 			idx = m_dataBlock.indexOf(m_boundary);
- 		}
-		
-	}
-	
-// 	qDebug() << "processBlock(): End of processing, m_dataBlock.size() remaining:"<<m_dataBlock.size();
+        if(ctypeString)
+        {
+            int ctypeIdx = m_dataBlock.indexOf(ctypeString);
+            if(ctypeIdx < 0)
+            {
+                qDebug() << "Error: Can't find content-type index in data block, exiting.";
+                exit();
+                return;
+            }
+
+            static QString boundaryMarker = "boundary=";
+            int boundaryStartIdx = m_dataBlock.indexOf(boundaryMarker,ctypeIdx);
+            if(boundaryStartIdx < 0)
+            {
+                qDebug() << "Error: Can't find boundary index after the first content-type index in data block, exiting:"<<m_dataBlock;
+                exit();
+                return;
+            }
+
+            int eolIdx = m_dataBlock.indexOf("\n",boundaryStartIdx);
+            int pos = boundaryStartIdx + boundaryMarker.length();
+            m_boundary = m_dataBlock.mid(pos, eolIdx - pos);
+            m_boundary.replace("\r","");
+            // 			qDebug() << "processBlock(): m_boundary:"<<m_boundary<<", pos:"<<pos<<", eolIdx:"<<eolIdx;
+        }
+    }
+    else
+    {
+        // we have the boundary string defenition, check for the boundary string in the data block.
+        // If found, grab the data from the start of the block up to and including the boundary, leaving any data after the boundary in the block.
+        // What we then have to process could look:
+        // Content-Type.....\r\n(data)--(boundary)
+
+        // If its the first block, we wait for the boundary, but discard it since the first block is the one that contains the server headers
+        // like the boundary definition, Server:, Connection:, etc.
+        int idx = m_dataBlock.indexOf(m_boundary);
+
+        while(idx > 0)
+        {
+            QByteArray block = m_dataBlock.left(idx);
+
+            int blockAndBoundaryLength = idx + m_boundary.length();
+            m_dataBlock.remove(0,blockAndBoundaryLength);
+            //qDebug() << "processBlock(): block length:"<<block.length()<<", blockAndBoundaryLength:"<<blockAndBoundaryLength;
+
+            if(m_firstBlock)
+            {
+                //QString string = block;
+                //qDebug() << "processBlock(): Discarding block since first block flag is true. Dump of block:\n"<<string;
+                m_firstBlock = false;
+            }
+            else
+            {
+                static const char * eol1 = "\n\n";
+                static const char * eol2 = "\r\n\r\n";
+                int headerLength = 0;
+                if(block.contains(eol2))
+                    headerLength = block.indexOf(eol2,0) + 4;
+                else
+                    if(block.contains(eol1))
+                        headerLength = block.indexOf(eol1,0) + 2;
+
+                if(headerLength)
+                {
+                    QString header = block.left(headerLength);
+
+                    block.remove(0,headerLength);
+
+                    // Block should now be just data
+                    qDebug() << "processBlock(): block length:"<<block.length()<<", headerLength:"<<headerLength<<", header:"<<header;
+
+                    if(block.length() > 0)
+                    {
+
+                        QImage frame = QImage::fromData(block);
+                        if(m_flipImage)
+                            frame = frame.mirrored(true,true);
+
+
+                        if(!frame.isNull())
+                        {
+                            qDebug() << "processBlock(): New image received, original size:"<<frame.size()<<", bytes:"<<block.length();
+
+                            if(m_autoResize.width()>0 && m_autoResize.height()>0 &&
+                                    m_autoResize != frame.size())
+                                frame = frame.scaled(m_autoResize);
+
+
+                            // 							qDebug() << "processBlock(): Emitting new image, size:"<<frame.size();
+                            emit newImage(frame);
+                        }
+
+#ifdef MJPEG_TEST
+                        QPixmap pix = QPixmap::fromImage(frame);
+                        m_label->setPixmap(pix);
+                        m_label->resize(pix.width(),pix.height());
+#endif
+                    }
+                }
+
+            }
+
+            // 			// check for another boundary string in the data before exiting from processBlock()
+            idx = m_dataBlock.indexOf(m_boundary);
+        }
+
+    }
+
+    // 	qDebug() << "processBlock(): End of processing, m_dataBlock.size() remaining:"<<m_dataBlock.size();
 }
 
 void MjpegClient::exit()
@@ -261,7 +256,7 @@ void MjpegClient::exit()
 		m_socket->disconnectFromHost();
 		//m_socket->waitForDisconnected();
 		m_socket->deleteLater();
-		//delete m_socket;
+        delete m_socket;
 		m_socket = 0;
 	}
 }

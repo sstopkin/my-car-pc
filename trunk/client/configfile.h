@@ -13,6 +13,7 @@ public:
     QString pass;
     int fps;
     QString title;
+    int inputType;
 };
 
 #endif // CONFIGFILE_H
