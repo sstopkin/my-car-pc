@@ -10,5 +10,4 @@ INPUT(
 ./.build/moc_MjpegClient.o
 ./.build/moc_mainwindow.o
 ./.build/moc_joystick.o
-./.build/qrc_systray.o
 );
