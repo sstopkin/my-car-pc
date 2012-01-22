@@ -33,7 +33,8 @@ void netw::conn(){
 
     QByteArray  block;
     QDataStream out(&block, QIODevice::WriteOnly);
-    out.setVersion(QDataStream::Qt_4_8);
+    out.setVersion(QDataStream::Qt_4_7);
+    //out.setVersion(QDataStream::Qt_4_8);
 
     out << (quint16)0;
     out << "Hello!!!\n";
