@@ -27,8 +27,7 @@ public slots:
     void setDesiredSize(QSize);
 	
     MjpegClient * connectTo(QString host, int port, QString path, const QString& user, const QString& pass);
-    MjpegClient * disconnectTo();
-	
+    MjpegClient * exit();
 	void setLiveFps(double);
 	
 protected:

@@ -64,17 +64,26 @@ MjpegClient * CameraViewerWidget::connectTo(QString host, int port, QString path
 	m_client->setAutoResize(rect().size());
 	// TODO catch resize event and update autoresize accordingly
 	m_client->start();
-
 	connect(m_client, SIGNAL(newImage(QImage)), this, SLOT(newImage(QImage)));
 	
 	return m_client;	
 }
 
-MjpegClient * CameraViewerWidget::disconnectTo(){
-    m_client->disconnect();
-    return m_client;
-}
+MjpegClient * CameraViewerWidget::exit(){
 
+    m_client->exit();
+    if(m_client)
+    {
+        //утечка памяти где то в MjpegClient
+        m_client->quit();
+        m_client->wait();
+        delete m_client;
+//        m_client = 0;
+    }
+        m_updateTimer.stop();
+    qDebug("exit =)");
+    return 0;
+}
 	
 void CameraViewerWidget::paintEvent(QPaintEvent */*event*/)
 {

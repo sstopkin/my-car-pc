@@ -12,16 +12,16 @@ ConfigFile::ConfigFile(QString configFileName)
     path = settings.value("network/path","/").toString();
     user = settings.value("network/user","").toString();
     pass = settings.value("network/pass","").toString();
-
-    if((! settings.value("network/host").isNull() ||
-        ! settings.value("network/portCam").isNull() ||
-        ! settings.value("network/portData").isNull() ||
-        ! settings.value("network/path").isNull() ||
-        ! settings.value("network/login").isNull() ||
-        ! settings.value("network/pass").isNull()))
-    {
-        qDebug() << "host or port or path is null in config";
-    }
+    inputType = settings.value("joy/inputType","1").toInt();
+//    if((! settings.value("network/host").isNull() ||
+//        ! settings.value("network/portCam").isNull() ||
+//        ! settings.value("network/portData").isNull() ||
+//        ! settings.value("network/path").isNull() ||
+//        ! settings.value("network/login").isNull() ||
+//        ! settings.value("network/pass").isNull()))
+//    {
+//        qDebug() << "host or port or path is null in config";
+//    }
 
     fps = settings.value("cam/fps",25).toInt();
     qDebug() << "Viewer: Running at"<<fps<<" frames per second";

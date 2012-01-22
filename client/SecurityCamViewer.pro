@@ -15,16 +15,24 @@ HEADERS       = \
     MjpegClient.h \
     mainwindow.h \
     netw.h \
-    configfile.h
+    configfile.h \
+    joystick.h
 
 SOURCES       = MjpegClient.cpp \
                 CameraViewerWidget.cpp \
                 main.cpp \
     mainwindow.cpp \
     netw.cpp \
-    configfile.cpp
+    configfile.cpp \
+    joystick.cpp
 QT           += network xml svg
 CONFIG += debug
 
 RESOURCES += \
     systray.qrc
+
+INCLUDEPATH += ../SDL-1.2.14/lib
+LIBS        += ../SDL-1.2.14/lib/libSDL.dll.a
+LIBS        += ../SDL-1.2.14/lib/libSDLmain.a
+#LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDL.dll.a
+#LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDLmain.a

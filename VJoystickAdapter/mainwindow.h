@@ -62,6 +62,7 @@ private slots:
     void ballSetup(int id, int stateX, int stateY);
 
     void on_rescanPushButton_clicked();
+    void on_connectPushButton_clicked();
 };
 
 #endif // MAINWINDOW_H
