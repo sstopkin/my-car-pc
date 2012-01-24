@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CameraViewerWidget.h'
 **
-** Created: Tue 24. Jan 21:06:23 2012
+** Created: Wed 25. Jan 01:24:38 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!

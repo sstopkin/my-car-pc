@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue 24. Jan 21:06:25 2012
+** Created: Wed 25. Jan 01:24:40 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,6 +35,13 @@ static const uint qt_meta_data_MainWindow[] = {
       36,   11,   11,   11, 0x08,
       62,   11,   11,   11, 0x08,
       88,   11,   11,   11, 0x08,
+     119,   11,   11,   11, 0x08,
+     153,   11,   11,   11, 0x08,
+     173,   11,   11,   11, 0x08,
+     207,  198,   11,   11, 0x08,
+     226,  198,   11,   11, 0x08,
+     244,  198,   11,   11, 0x08,
+     283,  266,   11,   11, 0x08,
 
        0        // eod
 };
@@ -43,7 +50,12 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0on_pushButton_clicked()\0"
     "on_pushButton_2_clicked()\0"
     "on_pushButton_3_clicked()\0"
-    "on_pushButton_4_clicked()\0"
+    "on_connectPushButton_clicked()\0"
+    "on_disconnectPushButton_clicked()\0"
+    "connectToJoystick()\0disconnectFromJoystick()\0"
+    "id,state\0axisSetup(int,int)\0"
+    "hatSetup(int,int)\0buttonSetup(int,bool)\0"
+    "id,stateX,stateY\0ballSetup(int,int,int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -55,11 +67,17 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_pushButton_clicked(); break;
         case 1: _t->on_pushButton_2_clicked(); break;
         case 2: _t->on_pushButton_3_clicked(); break;
-        case 3: _t->on_pushButton_4_clicked(); break;
+        case 3: _t->on_connectPushButton_clicked(); break;
+        case 4: _t->on_disconnectPushButton_clicked(); break;
+        case 5: _t->connectToJoystick(); break;
+        case 6: _t->disconnectFromJoystick(); break;
+        case 7: _t->axisSetup((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: _t->hatSetup((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 9: _t->buttonSetup((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 10: _t->ballSetup((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData MainWindow::staticMetaObjectExtraData = {
@@ -94,9 +112,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 11;
     }
     return _id;
 }

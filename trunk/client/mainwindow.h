@@ -28,7 +28,18 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_connectPushButton_clicked();
+
+    void on_disconnectPushButton_clicked();
+
+    void connectToJoystick();
+    void disconnectFromJoystick();
+//    void rescanJoystickDevice();
+
+    void axisSetup(int id, int state);
+    void hatSetup(int id, int state);
+    void buttonSetup(int id, bool state);
+    void ballSetup(int id, int stateX, int stateY);
 
 private:
     void setAvalibleJoystick();
@@ -38,10 +49,9 @@ private:
     QSize m_frameSize;
     ConfigFile *cfg;
     CameraViewerWidget *viewer;
-
     JoystickAdapter *joy;
     QVector<bool> buttonVector;
-    int m_Joy_ID;
+    int m_Joy_Id;
 };
 
 #endif // MAINWINDOW_H
