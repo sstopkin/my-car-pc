@@ -1,7 +1,7 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "configfile.h"
-#include "libssh/libssh.h"
+//#include "libssh/libssh.h"
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
