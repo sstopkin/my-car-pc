@@ -38,3 +38,6 @@ LIBS        += ../SDL-1.2.15/lib/libSDL.dll.a
 LIBS        += ../SDL-1.2.15/lib/libSDLmain.a
 #LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDL.dll.a
 #LIBS        += C:/Users/best/QtCreatorProjects/v_joy_qt/SDL-1.2.14/lib/libSDLmain.a
+
+LIBS += C:/Users/BEST/Desktop/my-car-pc/libssh-0.5.0/lib/ssh.lib
+INCLUDEPATH += C:/Users/BEST/Desktop/my-car-pc/libssh-0.5.0/lib
