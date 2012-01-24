@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MjpegClient.h'
 **
-** Created: Mon 23. Jan 06:29:12 2012
+** Created: Tue 24. Jan 21:06:24 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
