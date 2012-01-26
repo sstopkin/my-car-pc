@@ -54,6 +54,7 @@ private:
     QTimer *timer;
 
     int povState;
+    int buttonState[MAX_JOYSTICK_BUTTONS];
 };
 
 #endif // MAINWINDOW_H

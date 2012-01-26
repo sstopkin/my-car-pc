@@ -4,20 +4,24 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QTimer>
+#include "configfile.h"
 class net : public QObject
 {
     Q_OBJECT
 public:
-    explicit net(QObject *parent = 0);
+    explicit net(ConfigFile *cfg,QObject *parent = 0);
     void conn();
     void disconn();
 
-    void sendData(int);
+    void sendData(int,int[]);
 signals:
     
 public slots:
-
+private slots:
+    void lostConn();
 private:
+    void reconn();
+    ConfigFile *cfg;
     QString host;
     int port;
     QTcpSocket *socket;

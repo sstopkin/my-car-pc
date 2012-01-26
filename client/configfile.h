@@ -14,6 +14,8 @@ public:
     int fps;
     QString title;
     int inputType;
+    int updateInterval;
+    bool autoReconnect;
 };
 
 #endif // CONFIGFILE_H
