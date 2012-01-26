@@ -1,5 +1,4 @@
 #include "net.h"
-#include <QTimer>
 net::net(QObject *parent) :
     QObject(parent)
 {
@@ -12,24 +11,18 @@ net::net(QObject *parent) :
 void net::conn(){
     socket->connectToHost(host,port);
     socket->setReadBufferSize(1024 * 1024);
-//    sprintf(data, "GET HTTP/1.0\r\n");
-//    socket->write((const char*)&data,strlen((const char*)data));
     sprintf(data, "Host %s is connected",qPrintable(host));
-    socket->write((const char*)&data,strlen((const char*)data));
-
-    QTimer *timer = new QTimer(this);
-    timer->setInterval(1000/10);
-    connect(timer, SIGNAL(timeout()), this, SLOT(writeData()));
-    timer->start();
-}
-
-void net::writeData(){
-    sprintf(data, "Host \n",qPrintable(host));
     socket->write((const char*)&data,strlen((const char*)data));
 }
 
 void net::disconn(){
     socket->disconnectFromHost();
     socket->abort();
+}
+
+void net::sendData(int povState){
+    QString strSend=QString::number(povState);
+    sprintf(data, strSend.toAscii(),qPrintable(host));
+    socket->write((const char*)&data,strlen((const char*)data));
 }
 

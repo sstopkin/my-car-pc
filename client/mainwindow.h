@@ -7,7 +7,7 @@
 #include "joystick.h"
 #include "net.h"
 #include "MjpegClient.h"
-
+#include "QTimer"
 
 namespace Ui {
 class MainWindow;
@@ -23,13 +23,10 @@ public:
     
 private slots:
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
-
     void on_pushButton_3_clicked();
-
+    void on_pushButton_4_clicked();
     void on_connectPushButton_clicked();
-
     void on_disconnectPushButton_clicked();
 
     void connectToJoystick();
@@ -41,7 +38,7 @@ private slots:
     void buttonSetup(int id, bool state);
     void ballSetup(int id, int stateX, int stateY);
 
-    void on_pushButton_4_clicked();
+    void writeData();
 private:
     void setAvalibleJoystick();
     enum { MAX_JOYSTICK_BUTTONS = 30 };
@@ -54,6 +51,9 @@ private:
     QVector<bool> buttonVector;
     int m_Joy_Id;
     net *network;
+    QTimer *timer;
+
+    int povState;
 };
 
 #endif // MAINWINDOW_H

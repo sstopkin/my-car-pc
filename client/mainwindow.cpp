@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QTimer"
+
 MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -18,7 +18,8 @@ MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     buttonVector.fill(false);
     setAvalibleJoystick();
 
-    network=new net;
+    timer = new QTimer;
+    network = new net;
 }
 
 MainWindow::~MainWindow()
@@ -29,8 +30,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
-
-viewer = new CameraViewerWidget(this);
+    viewer = new CameraViewerWidget(this);
     viewer->connectTo(cfg->host,cfg->portCam,cfg->path,cfg->user,cfg->pass);
     viewer->setDesiredSize(m_frameSize);
     viewer->setLiveFps(cfg->fps);
@@ -45,9 +45,11 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-
     network->conn();
 
+    connect(timer, SIGNAL(timeout()), this, SLOT(writeData()));
+    timer->setInterval(1000/10);
+    timer->start();
 }
 
 void MainWindow::setAvalibleJoystick()
@@ -74,19 +76,19 @@ void MainWindow::connectToJoystick(){
         QString joyName = joy->getJoystickName();
         if(joyName == "")
             joyName = "Not connected";
-//        ui->joystickNameLabel->setText(joyName);
-//        ui->joystickIdLabel->setText(tr("%1").arg(m_adapter->getJoystickId()));
-//        ui->joystickAxisLabel->setText(tr("%1").arg(m_adapter->getJoystickNumAxes()));
-//        ui->joystickHatsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumHats()));
-//        ui->joystickBallsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumBalls()));
-//        ui->joystickButtonsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumButtons()));
+        //        ui->joystickNameLabel->setText(joyName);
+        //        ui->joystickIdLabel->setText(tr("%1").arg(m_adapter->getJoystickId()));
+        //        ui->joystickAxisLabel->setText(tr("%1").arg(m_adapter->getJoystickNumAxes()));
+        //        ui->joystickHatsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumHats()));
+        //        ui->joystickBallsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumBalls()));
+        //        ui->joystickButtonsLabel->setText(tr("%1").arg(m_adapter->getJoystickNumButtons()));
 
-//        ui->joystickStateBox->setEnabled(true);
-//        ui->joystickInformationBox->setEnabled(true);
+        //        ui->joystickStateBox->setEnabled(true);
+        //        ui->joystickInformationBox->setEnabled(true);
         ui->connectPushButton->setDisabled(true);
         ui->disconnectPushButton->setEnabled(true);
         ui->joystickComboBox->setDisabled(true);
-//        ui->rescanPushButton->setDisabled(true);
+        //        ui->rescanPushButton->setDisabled(true);
     }
 }
 
@@ -101,13 +103,13 @@ void MainWindow::disconnectFromJoystick()
         disconnect(joy, SIGNAL(sigBallChanged(int,int,int)), this, SLOT(ballSetup(int,int,int)));
     }
 
-//    ui->joystickStateBox->setDisabled(true);
-//    ui->joystickInformationBox->setDisabled(true);
+    //    ui->joystickStateBox->setDisabled(true);
+    //    ui->joystickInformationBox->setDisabled(true);
 
     ui->connectPushButton->setEnabled(true);
     ui->disconnectPushButton->setDisabled(true);
     ui->joystickComboBox->setEnabled(true);
-//    ui->rescanPushButton->setEnabled(true);
+    //    ui->rescanPushButton->setEnabled(true);
 
     m_Joy_Id = -1;
 
@@ -127,33 +129,34 @@ void MainWindow::on_disconnectPushButton_clicked()
 
 void MainWindow::axisSetup(int id, int state)
 {
-//    switch(id)
-//    {
-//    case 0:
-//        ui->joystickXaxisLabel->setText(tr("%1").arg(state));
-//        break;
-//    case 1:
-//        ui->joystickYaxisLabel->setText(tr("%1").arg(-1*state));
-//        break;
-//    case 2:
-//        ui->joystickZLTaxisLabel->setText(tr("%1").arg(state));
-//        break;
-//    case 3:
-//        ui->joystickXrotationLabel->setText(tr("%1").arg(state));
-//        break;
-//    case 4:
-//        ui->joystickYrotationLabel->setText(tr("%1").arg(-1*state));
-//        break;
-//    case 5:
-//        ui->joystickZRTaxisLabel->setText(tr("%1").arg(state));
-//        break;
-//    }
+    //    switch(id)
+    //    {
+    //    case 0:
+    //        ui->joystickXaxisLabel->setText(tr("%1").arg(state));
+    //        break;
+    //    case 1:
+    //        ui->joystickYaxisLabel->setText(tr("%1").arg(-1*state));
+    //        break;
+    //    case 2:
+    //        ui->joystickZLTaxisLabel->setText(tr("%1").arg(state));
+    //        break;
+    //    case 3:
+    //        ui->joystickXrotationLabel->setText(tr("%1").arg(state));
+    //        break;
+    //    case 4:
+    //        ui->joystickYrotationLabel->setText(tr("%1").arg(-1*state));
+    //        break;
+    //    case 5:
+    //        ui->joystickZRTaxisLabel->setText(tr("%1").arg(state));
+    //        break;
+    //    }
 }
 
 void MainWindow::hatSetup(int id, int state)
 {
     Q_UNUSED(id);
-//    ui->joystickPOV0Label->setText(tr("%1").arg(state));
+    //    ui->joystickPOV0Label->setText(tr("%1").arg(state));
+    povState=state;
 }
 
 void MainWindow::buttonSetup(int id, bool state)
@@ -171,7 +174,7 @@ void MainWindow::buttonSetup(int id, bool state)
                 buttonTest += tr("%1").arg(i);
         }
     }
-//    ui->joystickButtonsTestLabel->setText(buttonTest);
+    //    ui->joystickButtonsTestLabel->setText(buttonTest);
 }
 
 void MainWindow::ballSetup(int id, int stateX, int stateY)
@@ -184,4 +187,8 @@ void MainWindow::ballSetup(int id, int stateX, int stateY)
 void MainWindow::on_pushButton_4_clicked()
 {
     network->disconn();
+}
+
+void MainWindow::writeData(){
+    network->sendData(povState);
 }
