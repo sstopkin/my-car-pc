@@ -43,8 +43,9 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    netw network;
-    network.conn();
+    netw *network;
+    network=new netw;
+    network->conn();
 }
 
 void MainWindow::setAvalibleJoystick()
