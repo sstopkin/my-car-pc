@@ -3,11 +3,12 @@ INPUT(
 ./.build/CameraViewerWidget.o
 ./.build/main.o
 ./.build/mainwindow.o
-./.build/netw.o
 ./.build/configfile.o
 ./.build/joystick.o
+./.build/net.o
 ./.build/moc_CameraViewerWidget.o
 ./.build/moc_MjpegClient.o
 ./.build/moc_mainwindow.o
 ./.build/moc_joystick.o
+./.build/moc_net.o
 );
