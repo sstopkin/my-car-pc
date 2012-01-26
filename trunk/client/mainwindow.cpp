@@ -17,6 +17,8 @@ MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     }
     buttonVector.fill(false);
     setAvalibleJoystick();
+
+    network=new netw;
 }
 
 MainWindow::~MainWindow()
@@ -43,8 +45,6 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    netw *network;
-    network=new netw;
     network->conn();
 }
 
@@ -177,4 +177,9 @@ void MainWindow::ballSetup(int id, int stateX, int stateY)
     Q_UNUSED(id);
     Q_UNUSED(stateX);
     Q_UNUSED(stateY);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    network->disconn();
 }

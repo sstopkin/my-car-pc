@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu 26. Jan 23:41:37 2012
+** Created: Fri 27. Jan 01:03:20 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,6 +38,7 @@ public:
     QComboBox *joystickComboBox;
     QPushButton *connectPushButton;
     QPushButton *disconnectPushButton;
+    QPushButton *pushButton_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -61,16 +62,19 @@ public:
         pushButton_2->setGeometry(QRect(670, 40, 101, 23));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(670, 70, 75, 23));
+        pushButton_3->setGeometry(QRect(670, 90, 101, 23));
         joystickComboBox = new QComboBox(centralwidget);
         joystickComboBox->setObjectName(QString::fromUtf8("joystickComboBox"));
-        joystickComboBox->setGeometry(QRect(670, 160, 101, 22));
+        joystickComboBox->setGeometry(QRect(670, 290, 101, 22));
         connectPushButton = new QPushButton(centralwidget);
         connectPushButton->setObjectName(QString::fromUtf8("connectPushButton"));
-        connectPushButton->setGeometry(QRect(670, 100, 101, 23));
+        connectPushButton->setGeometry(QRect(670, 230, 101, 23));
         disconnectPushButton = new QPushButton(centralwidget);
         disconnectPushButton->setObjectName(QString::fromUtf8("disconnectPushButton"));
-        disconnectPushButton->setGeometry(QRect(670, 130, 101, 23));
+        disconnectPushButton->setGeometry(QRect(670, 260, 101, 23));
+        pushButton_4 = new QPushButton(centralwidget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(670, 120, 101, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -90,9 +94,10 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "ConnectVideo", 0, QApplication::UnicodeUTF8));
         pushButton_2->setText(QApplication::translate("MainWindow", "DisconnectVideo", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Send", 0, QApplication::UnicodeUTF8));
+        pushButton_3->setText(QApplication::translate("MainWindow", "ConnectData", 0, QApplication::UnicodeUTF8));
         connectPushButton->setText(QApplication::translate("MainWindow", "ConnectJoystick", 0, QApplication::UnicodeUTF8));
         disconnectPushButton->setText(QApplication::translate("MainWindow", "Disconnect Joystick", 0, QApplication::UnicodeUTF8));
+        pushButton_4->setText(QApplication::translate("MainWindow", "DisconnectData", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
