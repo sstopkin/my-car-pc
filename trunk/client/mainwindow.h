@@ -5,7 +5,7 @@
 #include "configfile.h"
 #include "CameraViewerWidget.h"
 #include "joystick.h"
-#include "netw.h"
+#include "net.h"
 #include "MjpegClient.h"
 
 
@@ -42,7 +42,6 @@ private slots:
     void ballSetup(int id, int stateX, int stateY);
 
     void on_pushButton_4_clicked();
-
 private:
     void setAvalibleJoystick();
     enum { MAX_JOYSTICK_BUTTONS = 30 };
@@ -54,7 +53,7 @@ private:
     JoystickAdapter *joy;
     QVector<bool> buttonVector;
     int m_Joy_Id;
-    netw *network;
+    net *network;
 };
 
 #endif // MAINWINDOW_H

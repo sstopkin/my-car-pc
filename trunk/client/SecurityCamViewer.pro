@@ -14,17 +14,17 @@ HEADERS       = \
                 CameraViewerWidget.h \
     MjpegClient.h \
     mainwindow.h \
-    netw.h \
     configfile.h \
-    joystick.h
+    joystick.h \
+    net.h
 
 SOURCES       = MjpegClient.cpp \
                 CameraViewerWidget.cpp \
                 main.cpp \
     mainwindow.cpp \
-    netw.cpp \
     configfile.cpp \
-    joystick.cpp
+    joystick.cpp \
+    net.cpp
 QT           += network
 CONFIG += debug
 

@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "QTimer"
 MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -18,7 +18,7 @@ MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     buttonVector.fill(false);
     setAvalibleJoystick();
 
-    network=new netw;
+    network=new net;
 }
 
 MainWindow::~MainWindow()
@@ -45,7 +45,9 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
+
     network->conn();
+
 }
 
 void MainWindow::setAvalibleJoystick()
