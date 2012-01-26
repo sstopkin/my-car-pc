@@ -19,7 +19,14 @@ MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     setAvalibleJoystick();
 
     timer = new QTimer;
-    network = new net;
+    timer->setInterval(1000/cfg->updateInterval);
+
+    povState=7;
+    for(int i=0;i<MAX_JOYSTICK_BUTTONS;i++){
+        buttonState[i]=7;
+    }
+
+    network = new net(cfg);
 }
 
 MainWindow::~MainWindow()
@@ -48,7 +55,7 @@ void MainWindow::on_pushButton_3_clicked()
     network->conn();
 
     connect(timer, SIGNAL(timeout()), this, SLOT(writeData()));
-    timer->setInterval(1000/10);
+
     timer->start();
 }
 
@@ -175,6 +182,13 @@ void MainWindow::buttonSetup(int id, bool state)
         }
     }
     //    ui->joystickButtonsTestLabel->setText(buttonTest);
+    if(state==true){
+        buttonState[id]=1;
+    }
+    else
+    {
+        buttonState[id]=0;
+    }
 }
 
 void MainWindow::ballSetup(int id, int stateX, int stateY)
@@ -186,9 +200,10 @@ void MainWindow::ballSetup(int id, int stateX, int stateY)
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    timer->stop();
     network->disconn();
 }
 
 void MainWindow::writeData(){
-    network->sendData(povState);
+    network->sendData(povState,buttonState);
 }
