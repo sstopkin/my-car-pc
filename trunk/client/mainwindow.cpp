@@ -21,7 +21,13 @@ MainWindow::MainWindow(ConfigFile *cfgfile,QWidget *parent) :
     timer = new QTimer;
     timer->setInterval(1000/cfg->updateInterval);
 
-    povState=7;
+    povState=0;
+    Xrotation=0;
+    Yrotation=0;
+    joyXaxis=0;
+    joyYaxis=0;
+    ZLTaxis=0;
+    ZRTaxis=0;
     for(int i=0;i<MAX_JOYSTICK_BUTTONS;i++){
         buttonState[i]=7;
     }
@@ -136,27 +142,33 @@ void MainWindow::on_disconnectPushButton_clicked()
 
 void MainWindow::axisSetup(int id, int state)
 {
-    //    switch(id)
-    //    {
-    //    case 0:
-    //        ui->joystickXaxisLabel->setText(tr("%1").arg(state));
-    //        break;
-    //    case 1:
-    //        ui->joystickYaxisLabel->setText(tr("%1").arg(-1*state));
-    //        break;
-    //    case 2:
-    //        ui->joystickZLTaxisLabel->setText(tr("%1").arg(state));
-    //        break;
-    //    case 3:
-    //        ui->joystickXrotationLabel->setText(tr("%1").arg(state));
-    //        break;
-    //    case 4:
-    //        ui->joystickYrotationLabel->setText(tr("%1").arg(-1*state));
-    //        break;
-    //    case 5:
-    //        ui->joystickZRTaxisLabel->setText(tr("%1").arg(state));
-    //        break;
-    //    }
+        switch(id)
+        {
+        case 0:
+            //ui->joystickXaxisLabel->setText(tr("%1").arg(state));
+            joyXaxis=state;
+            break;
+        case 1:
+            //ui->joystickYaxisLabel->setText(tr("%1").arg(-1*state));
+            joyYaxis=state;
+            break;
+        case 2:
+            //ui->joystickZLTaxisLabel->setText(tr("%1").arg(state));
+            ZLTaxis=state;
+            break;
+        case 3:
+            //ui->joystickXrotationLabel->setText(tr("%1").arg(state));
+            Xrotation=state;
+            break;
+        case 4:
+            //ui->joystickYrotationLabel->setText(tr("%1").arg(-1*state));
+            Yrotation=-1*state;
+            break;
+        case 5:
+            //ui->joystickZRTaxisLabel->setText(tr("%1").arg(state));
+            ZRTaxis=-1*state;
+            break;
+        }
 }
 
 void MainWindow::hatSetup(int id, int state)
@@ -205,5 +217,5 @@ void MainWindow::on_pushButton_4_clicked()
 }
 
 void MainWindow::writeData(){
-    network->sendData(povState,buttonState);
+    network->sendData(povState,buttonState,joyXaxis,joyYaxis,Xrotation,Yrotation,ZLTaxis,ZRTaxis);
 }
