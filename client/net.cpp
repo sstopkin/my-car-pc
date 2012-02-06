@@ -27,8 +27,9 @@ R - тяговый двигатель, движение назад
 B - тяговый двигатель, торможение
 S - рулевое управление
 */
-void net::sendData(int povState,int buttonState[30]){
+void net::sendData(int povState,int buttonState[30], int joyX, int joyY, int rotX, int rotY, int joyZL, int joyZR){
     QString strSend;
+    //joyXaxis,joyYaxis,Xrotation,Yrotation,ZLTaxis,ZRTaxis
 
     /*strSend+="p"+QString::number(povState)+"b";
     for(int i=0;i<30;i++){
@@ -64,6 +65,7 @@ void net::sendData(int povState,int buttonState[30]){
     default :
         strSend+="B000S500";
     }
+    strSend+=joyX;//+" "+joyY+" "+rotX+" "+rotY+" "+joyZL+" "+joyZR;
     strSend+="\n";
     sprintf(data, strSend.toAscii(),qPrintable(host));
     socket->write((const char*)&data,strlen((const char*)data));

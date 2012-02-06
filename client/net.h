@@ -13,7 +13,7 @@ public:
     void conn();
     void disconn();
 
-    void sendData(int,int[]);
+    void sendData(int,int[],int,int,int,int,int,int);
 signals:
     
 public slots:

@@ -55,6 +55,12 @@ private:
 
     int povState;
     int buttonState[MAX_JOYSTICK_BUTTONS];
+    int joyXaxis;
+    int joyYaxis;
+    int ZLTaxis;
+    int Xrotation;
+    int Yrotation;
+    int ZRTaxis;
 };
 
 #endif // MAINWINDOW_H
