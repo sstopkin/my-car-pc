@@ -13,7 +13,7 @@ net::net(ConfigFile *cfgfile,QObject *parent) :
 void net::conn(){
     socket->connectToHost(host,port);
     socket->setReadBufferSize(1024 * 1024);
-    sprintf(data, "Host %s is connected",qPrintable(host));
+    //sprintf(data, "Host %s is connected",qPrintable(host));
     socket->write((const char*)&data,strlen((const char*)data));
 }
 
@@ -36,38 +36,38 @@ void net::sendData(int povState,int buttonState[30], int joyX, int joyY, int rot
     }
     strSend+="\n";
     */
-    int mode=2;
+    int mode=1;
     if (mode==1){
         switch (povState) {
         case 1 ://U
-            strSend+="F999S500";
+            strSend+="F255S250";
             break;
         case 2 ://R
-            strSend+="B000S999";
+            strSend+="B000S500";
             break;
         case 4 ://D
-            strSend+="R999S500";
+            strSend+="R255S250";
             break;
         case 8 ://L
             strSend+="B000S000";
             break;
         case 3 ://UR
-            strSend+="F999S999";
+            strSend+="F255S255";
             break;
         case 6 ://RD
-            strSend+="R999S999";
+            strSend+="R255S500";
             break;
         case 12 ://LD
-            strSend+="R999S000";
+            strSend+="R255S000";
             break;//LU
         case 9 :
-            strSend+="F999S000";
+            strSend+="F255S000";
             break;
         default :
             strSend+="B000S500";
         }
-        strSend+=QString::number(joyX)+" "+QString::number(joyY)+" "+QString::number(rotX)+" "+QString::number(rotY)+" "+QString::number(joyZL)+" "+QString::number(joyZR);
-        strSend+="\n";
+   //     strSend+=QString::number(joyX)+" "+QString::number(joyY)+" "+QString::number(rotX)+" "+QString::number(rotY)+" "+QString::number(joyZL)+" "+QString::number(joyZR);
+   //     strSend+="\n";
     }
     else{
         if(joyY>1){

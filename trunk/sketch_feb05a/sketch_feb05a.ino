@@ -1,7 +1,11 @@
+int led7=7;
+int led8=8;
 int led9=9;
 int led10=10;
 int data1;
 void setup(){
+  pinMode(led7,OUTPUT);
+  pinMode(led8,OUTPUT);
   pinMode(led9,OUTPUT);
   pinMode(led10,OUTPUT);
   Serial.begin(19200);
@@ -13,9 +17,8 @@ void loop() {
     int i;
     for (i=0; i<4; i++)
     {
-        while (!(Serial.available())) /* РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ delay */ ;
+        while (!(Serial.available())) /* можно добавить delay */ ;
         data[i] = (char) (Serial.read());
-        //data[i] = Serial.read();
         //Serial.print("I received: ");
         Serial.println(data[i], DEC);
         Serial.println(data[i]);
@@ -33,9 +36,7 @@ void loop() {
     {
         numb = numb * 10 + ((int) data[i]-'0');
     }
-    if (numb>255) {
-      numb=255;      
-    }
+
     handle(data[0], numb);
 }
 
@@ -44,19 +45,29 @@ void handle(char letter, int number)
     switch(letter)
     {
     case 'F':
-        /* РѕР±СЂР°Р±РѕС‚РєР° F */
-        analogWrite(led9,number);
+        /* обработка F */
+        digitalWrite(led8,HIGH);     
+        analogWrite(led10,number);
         break;
     case 'B':
-        /* РѕР±СЂР°Р±РѕС‚РєР° B */
-        analogWrite(led9,number);
+
+        /* обработка B */
         break;
     case 'R':
-        /* РѕР±СЂР°Р±РѕС‚РєР° R */
-        break;
+      digitalWrite(led8,LOW);
+      analogWrite(led10,number);
+      /* обработка R */
+    break;
     case 'S':
-        /* РѕР±СЂР°Р±РѕС‚РєР° S */
-        analogWrite(led10,number);
+        /* обработка S */
+        if (number<250){
+          digitalWrite(led7,HIGH);
+          analogWrite(led9,250-number);
+        }
+        if (number>=250){
+          digitalWrite(led7,LOW);
+          analogWrite(led9,number-250);
+        }
         break;
     }
 }
