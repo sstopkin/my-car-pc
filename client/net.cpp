@@ -30,43 +30,53 @@ S - рулевое управление
 void net::sendData(int povState,int buttonState[30], int joyX, int joyY, int rotX, int rotY, int joyZL, int joyZR){
     QString strSend;
     //joyXaxis,joyYaxis,Xrotation,Yrotation,ZLTaxis,ZRTaxis
-
     /*strSend+="p"+QString::number(povState)+"b";
     for(int i=0;i<30;i++){
         strSend+=QString::number(buttonState[i]);
     }
     strSend+="\n";
     */
-    switch (povState) {
-    case 1 ://U
-        strSend+="F999S500";
-        break;
-    case 2 ://R
-        strSend+="B000S999";
-        break;
-    case 4 ://D
-        strSend+="R999S500";
-        break;
-    case 8 ://L
-        strSend+="B000S000";
-        break;
-    case 3 ://UR
-        strSend+="F999S999";
-        break;
-    case 6 ://RD
-        strSend+="R999S999";
-        break;
-    case 12 ://LD
-        strSend+="R999S000";
-        break;//LU
-    case 9 :
-        strSend+="F999S000";
-        break;
-    default :
-        strSend+="B000S500";
+    int mode=2;
+    if (mode==1){
+        switch (povState) {
+        case 1 ://U
+            strSend+="F999S500";
+            break;
+        case 2 ://R
+            strSend+="B000S999";
+            break;
+        case 4 ://D
+            strSend+="R999S500";
+            break;
+        case 8 ://L
+            strSend+="B000S000";
+            break;
+        case 3 ://UR
+            strSend+="F999S999";
+            break;
+        case 6 ://RD
+            strSend+="R999S999";
+            break;
+        case 12 ://LD
+            strSend+="R999S000";
+            break;//LU
+        case 9 :
+            strSend+="F999S000";
+            break;
+        default :
+            strSend+="B000S500";
+        }
+        strSend+=QString::number(joyX)+" "+QString::number(joyY)+" "+QString::number(rotX)+" "+QString::number(rotY)+" "+QString::number(joyZL)+" "+QString::number(joyZR);
+        strSend+="\n";
     }
-    strSend+=joyX;//+" "+joyY+" "+rotX+" "+rotY+" "+joyZL+" "+joyZR;
-    strSend+="\n";
+    else{
+        if(joyY>1){
+
+        }
+        if(joyY<1){
+
+        }
+    }
     sprintf(data, strSend.toAscii(),qPrintable(host));
     socket->write((const char*)&data,strlen((const char*)data));
 }
