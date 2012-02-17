@@ -63,8 +63,11 @@ void net::sendData(int povState,int buttonState[30], int joyX, int joyY, int rot
         case 9 :
             strSend+="F255S000";
             break;
+        case 0 :
+            strSend+="F000S250";
+            break;
         default :
-            strSend+="B000S500";
+            strSend+="F000S20";
         }
    //     strSend+=QString::number(joyX)+" "+QString::number(joyY)+" "+QString::number(rotX)+" "+QString::number(rotY)+" "+QString::number(joyZL)+" "+QString::number(joyZR);
    //     strSend+="\n";
