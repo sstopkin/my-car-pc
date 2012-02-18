@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+C:\Users\BEST\Desktop\my-car-pc\.metadata\.plugins\org.eclipse.jdt.core
+677931878.index
+3605164855.index
