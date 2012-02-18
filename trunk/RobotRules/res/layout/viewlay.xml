@@ -17,11 +17,28 @@
             android:layout_height="fill_parent" >
 
             <ImageButton
-                android:id="@+id/ImageButton01"
+                android:id="@+id/ImageButtonDown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="NULL"
                 android:src="@drawable/robotrulesdown48" />
+
+            <ImageButton
+                android:id="@+id/ImageButtonUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/robotrulesup48" />
+
+            <ImageButton
+                android:id="@+id/ImageButtonLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/robotrulesleft48" />
+
+            <ImageButton
+                android:id="@+id/ImageButtonRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/robotrulesright48" />
         </LinearLayout>
     </RelativeLayout>
 
