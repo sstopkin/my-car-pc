@@ -11,30 +11,30 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class viewlay extends Activity {
+	
+	public WebView webView;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    Intent intent = getIntent();
-	    String url = intent.getStringExtra("url");
-	    final WebView webView = new WebView(this);
-	    setContentView(webView);
-	    webView.setWebViewClient(new WebViewClient());
-	    //.setWebViewClient(new QuotesWebView(this));
-	    webView.getSettings().setJavaScriptEnabled(true);
-	    //webView.loadUrl("http://"+url+":7776/?action=stream");
-	    webView.loadUrl("http://"+url+":7776/?action=snapshot");
-	    
-	    ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
-	    timer.scheduleAtFixedRate(new Runnable() {
+		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();
+		setContentView(R.layout.viewlay);
+		String url = intent.getStringExtra("url");
+		webView = (WebView)findViewById(R.id.webView1);
+		webView.setWebViewClient(new WebViewClient());
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.loadUrl("http://" + url + ":7776/?action=snapshot");
 
-            public void run() {
-            webView.reload();
-            }
+		ScheduledExecutorService timer = Executors
+				.newSingleThreadScheduledExecutor();
+		timer.scheduleAtFixedRate(new Runnable() {
 
-    }, 10, Long.parseLong("200"),TimeUnit.MILLISECONDS);
+			public void run() {
+				webView.reload();
+			}
+
+		}, 10, Long.parseLong("200"), TimeUnit.MILLISECONDS);
 	}
 
 }
-
