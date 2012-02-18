@@ -43,26 +43,26 @@ void net::sendData(int povState,int buttonState[30], int joyX, int joyY, int rot
             strSend+="F255S250";
             break;
         case 2 ://R
-            strSend+="B000S500";
+            strSend+="B000S000";
             break;
         case 4 ://D
             strSend+="R255S250";
             break;
         case 8 ://L
-            strSend+="B000S000";
+            strSend+="B000S500";
             break;
-        case 3 ://UR
-            strSend+="F255S255";
-            break;
-        case 6 ://RD
-            strSend+="R255S500";
-            break;
-        case 12 ://LD
-            strSend+="R255S000";
-            break;//LU
-        case 9 :
-            strSend+="F255S000";
-            break;
+//        case 3 ://UR
+//            strSend+="F255S255";
+//            break;
+//        case 6 ://RD
+//            strSend+="R255S500";
+//            break;
+//        case 12 ://LD
+//            strSend+="R255S000";
+//            break;//LU
+//        case 9 :
+//            strSend+="F255S000";
+//            break;
         case 0 :
             strSend+="F000S250";
             break;
