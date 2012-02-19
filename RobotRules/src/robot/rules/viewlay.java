@@ -99,7 +99,7 @@ public class viewlay extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					netwsend("S500");
+					netwsend("S000");
 				} catch (UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
