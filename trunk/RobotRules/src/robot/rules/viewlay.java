@@ -25,6 +25,7 @@ public class viewlay extends Activity {
 	private ImageButton buttonright;
 	private ImageButton buttonup;
 	private ImageButton buttondown;
+	private ImageButton buttonstop;
 	private BufferedWriter out;
 	private Socket s;
 
@@ -43,6 +44,7 @@ public class viewlay extends Activity {
 		buttonleft = (ImageButton) findViewById(R.id.ImageButtonLeft);
 		buttonright = (ImageButton) findViewById(R.id.ImageButtonRight);
 		buttonup = (ImageButton) findViewById(R.id.ImageButtonUp);
+		buttonstop = (ImageButton) findViewById(R.id.ImageButtonStop);
 
 		
 		buttondown.setOnClickListener(new OnClickListener() {
@@ -50,7 +52,23 @@ public class viewlay extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
-					netwsend("B200");
+					netwsend("R250");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		buttonstop.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try {
+					netwsend("F000S250");
 				} catch (UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -124,7 +142,6 @@ public class viewlay extends Activity {
 		s = new Socket("192.168.0.20", 3000);
 		out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 		out.write(str);
-		out.write("F000S250");
 		out.flush();
 		
 		s.close();

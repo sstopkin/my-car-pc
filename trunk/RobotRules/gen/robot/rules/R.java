@@ -15,12 +15,14 @@ public final class R {
         public static final int robotrulesdown48=0x7f020001;
         public static final int robotrulesleft48=0x7f020002;
         public static final int robotrulesright48=0x7f020003;
-        public static final int robotrulesup48=0x7f020004;
+        public static final int robotrulesstop48=0x7f020004;
+        public static final int robotrulesup48=0x7f020005;
     }
     public static final class id {
-        public static final int ImageButtonDown=0x7f050005;
-        public static final int ImageButtonLeft=0x7f050006;
-        public static final int ImageButtonRight=0x7f050007;
+        public static final int ImageButtonDown=0x7f050006;
+        public static final int ImageButtonLeft=0x7f050007;
+        public static final int ImageButtonRight=0x7f050008;
+        public static final int ImageButtonStop=0x7f050005;
         public static final int ImageButtonUp=0x7f050004;
         public static final int button1=0x7f050002;
         public static final int editText1=0x7f050001;
