@@ -1,9 +1,7 @@
 package robot.rules;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -14,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
@@ -28,6 +25,8 @@ public class viewlay extends Activity {
 	private ImageButton buttonright;
 	private ImageButton buttonup;
 	private ImageButton buttondown;
+	private BufferedWriter out;
+	private Socket s;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -45,46 +44,20 @@ public class viewlay extends Activity {
 		buttonright = (ImageButton) findViewById(R.id.ImageButtonRight);
 		buttonup = (ImageButton) findViewById(R.id.ImageButtonUp);
 
-		// try {
-		// Socket socket = new Socket("192.168.0.20", 3000);
-		// } catch (UnknownHostException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		Socket s;
-		try {
-			s = new Socket("192.168.0.20", 3000);
-//			BufferedReader in = new BufferedReader(new InputStreamReader(
-//					s.getInputStream()));
-			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-					s.getOutputStream()));
-			// send output msg
-			String outMsg = "TCP connecting to "
-					+ System.getProperty("line.separator");
-			out.write(outMsg);
-			out.flush();
-//			Log.i("TcpClient", "sent: " + outMsg);
-			// accept server response
-			//String inMsg = in.readLine() + System.getProperty("line.separator");
-			// close connection
-			s.close();
-
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
 		buttondown.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				try {
+					netwsend("B200");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -92,21 +65,45 @@ public class viewlay extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				try {
+					netwsend("S500");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		buttonright.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				try {
+					netwsend("S500");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		buttonup.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
+				try {
+					netwsend("F250");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -115,10 +112,21 @@ public class viewlay extends Activity {
 		timer.scheduleAtFixedRate(new Runnable() {
 
 			public void run() {
+
 				webView.reload();
+				
 			}
 
-		}, 10, Long.parseLong("200"), TimeUnit.MILLISECONDS);
-
+		}, 10, Long.parseLong("500"), TimeUnit.MILLISECONDS);
+	}
+	
+	public void netwsend(String str) throws UnknownHostException, IOException{
+		s = new Socket("192.168.0.20", 3000);
+		out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+		out.write(str);
+		out.write("F000S250");
+		out.flush();
+		
+		s.close();
 	}
 }
