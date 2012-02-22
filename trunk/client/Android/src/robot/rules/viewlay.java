@@ -12,11 +12,9 @@ import java.util.concurrent.TimeUnit;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 
 public class viewlay extends Activity{
@@ -41,20 +39,23 @@ public class viewlay extends Activity{
 		Intent intent = getIntent();
 		setContentView(R.layout.viewlay);
 		String url = intent.getStringExtra("url");
-		webView = (WebView) findViewById(R.id.webView1);
-		webView.setWebViewClient(new WebViewClient());
-		webView.getSettings().setJavaScriptEnabled(true);
-		webView.loadUrl("http://" + url + ":55001/?action=snapshot");//7776
-		
+//		webView = (WebView) findViewById(R.id.webView1);
+//		webView.setWebViewClient(new WebViewClient());
+//		webView.getSettings().setJavaScriptEnabled(true);
+//		webView.loadUrl("http://" + url + ":55001/?action=snapshot");//7776
+	
 		try {
 			s = new Socket("url", 55002);
+			out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+			out.write("F000S250");
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}//3000
+		}
+		
 		
 		buttondown = (ImageButton) findViewById(R.id.ImageButtonDown);
 		buttonleft = (ImageButton) findViewById(R.id.ImageButtonLeft);
@@ -180,86 +181,100 @@ public class viewlay extends Activity{
 				.newSingleThreadScheduledExecutor();
 		timer1.scheduleAtFixedRate(new Runnable() {
 
+			
 			public void run() {
-				switch (mov_state) {
-				case 1:
-					try {
-						netwsend("F250");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				case 2:
-					try {
-						netwsend("R250");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				default:
-					try {
-						netwsend("F000");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}					
-					break;
-				}			
-				switch (rot_state) {
-				case 1:
-					try {
-						netwsend("S000");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				case 2:
-					try {
-						netwsend("S500");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
-				default:
-					try {
-						netwsend("S250");
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					break;
+//				try {
+//					netwsend();
+//				} catch (UnknownHostException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+				try {
+					out.write("FFF\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 
 		}, 10, Long.parseLong("100"), TimeUnit.MILLISECONDS);
 	}
 	
-	public void netwsend(String str) throws UnknownHostException, IOException{
-		out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-		out.write(str);
-		out.write("F");
+	public void netwsend() throws UnknownHostException, IOException{
+		switch (mov_state) {
+		case 1:
+			try {
+				out.write("F250");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mov_state=0;
+			break;
+		case 2:
+			try {
+				out.write("R250");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		default:
+			try {
+				out.write("F000");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}					
+			break;
+		}			
+		switch (rot_state) {
+		case 1:
+			try {
+				out.write("S000");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case 2:
+			try {
+				out.write("S500");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		default:
+			try {
+				out.write("S250");
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		}
 		out.flush();
 	}
 	
