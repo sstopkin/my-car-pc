@@ -15,7 +15,7 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-        android:text="motoprogger.tk">
+        android:text="192.168.7.1">
 
         <requestFocus />
     </EditText>
