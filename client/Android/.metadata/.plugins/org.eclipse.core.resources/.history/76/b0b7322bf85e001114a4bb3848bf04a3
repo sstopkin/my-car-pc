@@ -224,23 +224,6 @@ public class viewlay extends Activity {
 		}
 
 	}
-	/*
-	 public void timerSetup(){
-     autoUpdate = new Timer();
-     autoUpdate.schedule(new TimerTask() {
-      @Override
-      public void run() {
-       runOnUiThread(new Runnable() {
-        @Override
-     public void run() {
-         //Actions goes here
-         webView.loadUrl(url);
-        }
-       });
-      }
-     }, 0, 500);//refresh rate time interval (ms)
-    }
-	 */
 
 	public void onStop() {
 		try {
