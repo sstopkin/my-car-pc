@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+C:\Users\best\Desktop\my-car-pc\client\Android\.metadata\.plugins\org.eclipse.jdt.core
+1880523919.index
+3605164855.index

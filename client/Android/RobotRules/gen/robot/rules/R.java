@@ -20,17 +20,16 @@ public final class R {
     }
     public static final class id {
         public static final int CommonLayout=0x7f050004;
-        public static final int ImageButtonDown=0x7f05000c;
+        public static final int ImageButtonDown=0x7f05000a;
         public static final int ImageButtonLeft=0x7f050006;
-        public static final int ImageButtonRight=0x7f050008;
-        public static final int ImageButtonStop=0x7f050007;
-        public static final int ImageButtonStop01=0x7f05000b;
-        public static final int ImageButtonUp=0x7f05000a;
-        public static final int LeftLayout=0x7f050009;
+        public static final int ImageButtonRight=0x7f050007;
+        public static final int ImageButtonUp=0x7f050009;
+        public static final int LeftLayout=0x7f050008;
         public static final int RightLayout=0x7f050005;
         public static final int button1=0x7f050002;
         public static final int editText1=0x7f050001;
         public static final int textView1=0x7f050000;
+        public static final int toggleButton1=0x7f05000b;
         public static final int webView1=0x7f050003;
     }
     public static final class layout {
