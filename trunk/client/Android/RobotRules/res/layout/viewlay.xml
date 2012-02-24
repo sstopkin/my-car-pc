@@ -31,13 +31,6 @@ android:layout_height="match_parent" >
    		            android:src="@drawable/robotrulesleft" />
 
    		        <ImageButton
-   		            android:id="@+id/ImageButtonStop"
-   		            android:layout_width="wrap_content"
-   		            android:layout_height="wrap_content"
-   		            android:layout_margin="10dp"
-   		            android:src="@drawable/robotrulesstop" />
-
-   		        <ImageButton
    		            android:id="@+id/ImageButtonRight"
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
@@ -63,13 +56,6 @@ android:layout_height="match_parent" >
    		            android:src="@drawable/robotrulesup" />
 
    		        <ImageButton
-   		            android:id="@+id/ImageButtonStop01"
-   		            android:layout_width="wrap_content"
-   		            android:layout_height="wrap_content"
-   		            android:layout_margin="10dp"
-   		            android:src="@drawable/robotrulesstop" />
-
-   		        <ImageButton
    		            android:id="@+id/ImageButtonDown"
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
@@ -77,6 +63,13 @@ android:layout_height="match_parent" >
    		            android:src="@drawable/robotrulesdown" />
    		    </LinearLayout>
 
+   		    <ToggleButton
+   		        android:id="@+id/toggleButton1"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:layout_alignParentTop="true"
+   		        android:layout_centerHorizontal="true"
+   		        android:text="ToggleButton" />
    		</RelativeLayout>
 
 </RelativeLayout>
