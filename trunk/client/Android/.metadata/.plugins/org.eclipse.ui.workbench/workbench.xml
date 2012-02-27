@@ -18,7 +18,7 @@
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -39,11 +39,11 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="viewlay.java" partName="viewlay.java" path="C:/Users/best/Desktop/my-car-pc/client/Android/RobotRules/src/robot/rules/viewlay.java" title="viewlay.java" tooltip="RobotRules/src/robot/rules/viewlay.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="viewlay.java" partName="viewlay.java" path="C:/Users/best/Desktop/my-car-pc/client/Android/RobotRules/src/robot/rules/viewlay.java" title="viewlay.java" tooltip="RobotRules/src/robot/rules/viewlay.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RobotRules/src/robot/rules/viewlay.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1288" selectionTopPixel="225"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1683" selectionTopPixel="0"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="viewlay.xml" partName="viewlay.xml" path="C:/Users/best/Desktop/my-car-pc/client/Android/RobotRules/res/layout/viewlay.xml" title="viewlay.xml" tooltip="RobotRules/res/layout/viewlay.xml" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="viewlay.xml" partName="viewlay.xml" path="C:/Users/best/Desktop/my-car-pc/client/Android/RobotRules/res/layout/viewlay.xml" title="viewlay.xml" tooltip="RobotRules/res/layout/viewlay.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RobotRules/res/layout/viewlay.xml"/>
 </editor>
 </editors>
@@ -102,7 +102,7 @@
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="com.android.ide.eclipse.editors.layout.LayoutEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -230,6 +230,7 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/RobotRules/src/robot/rules/viewlay.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/RobotRules/res/layout/viewlay.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/RobotRules/res/layout/viewlay.xml"/>
 </editors>
 <item historyLabel="viewlay.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
@@ -301,9 +302,10 @@
 <position info="not_deleted" x="5540" y="0"/>
 </item>
 <item historyLabel="viewlay.xml" index="1"/>
-<item active="true" historyLabel="viewlay.java" index="0">
+<item historyLabel="viewlay.java" index="0">
 <position info="not_deleted" x="1042" y="8"/>
 </item>
+<item active="true" historyLabel="viewlay.xml" index="2"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -321,6 +323,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="robotrulesstop.png" tooltip="RobotRules/res/drawable-hdpi/robotrulesstop.png">
+<persistable path="/RobotRules/res/drawable-hdpi/robotrulesstop.png"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="viewlay.xml" tooltip="RobotRules/res/layout/viewlay.xml">
 <persistable path="/RobotRules/res/layout/viewlay.xml"/>
 </file>

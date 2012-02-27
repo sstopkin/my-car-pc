@@ -37,6 +37,7 @@ android:layout_height="match_parent" >
    		        android:id="@+id/CenterLayout"
    		        android:layout_width="match_parent"
    		        android:layout_height="match_parent"
+   		        android:layout_alignBottom="match_parent"
    		        android:layout_alignParentBottom="true"				
    		        android:layout_centerHorizontal="true"
    		        android:gravity="center"
