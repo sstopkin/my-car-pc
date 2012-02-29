@@ -25,43 +25,15 @@ android:layout_height="match_parent" >
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
    		            android:layout_margin="10dp"
+   		            android:background="@drawable/robotrulesleft"
    		            android:src="@drawable/robotrulesleft" />
    		        <ImageButton
    		            android:id="@+id/ImageButtonRight"
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
    		            android:layout_margin="10dp"
+   		            android:background="@drawable/robotrulesright"
    		            android:src="@drawable/robotrulesright" />
-   		    </LinearLayout>
-			<LinearLayout
-   		        android:id="@+id/CenterLayout"
-   		        android:layout_width="match_parent"
-   		        android:layout_height="match_parent"
-   		        android:layout_alignParentBottom="true"				
-   		        android:layout_centerHorizontal="true"
-   		        android:gravity="center"
-   		        android:orientation="horizontal" >
-   		        <ImageButton
-   		            android:id="@+id/ImageButtonLight"
-   		            android:layout_width="wrap_content"
-   		            android:layout_height="wrap_content"
-   		            android:layout_margin="10dp"
-   		            android:layout_alignParentBottom="true"
-   		            android:src="@drawable/robotruleslight" />
-   		        <ToggleButton
-   		        	android:id="@+id/ToggleButton"
-   		        	android:layout_width="wrap_content"
-   		        	android:layout_height="wrap_content"
-	   		        android:layout_margin="10dp"
-	   		        android:layout_alignParentBottom="true"
-	   		        android:background="@drawable/robotrulesstop" />
-   		        <ImageButton
-   		            android:id="@+id/ImageButtonBeep"
-   		            android:layout_width="wrap_content"
-   		            android:layout_height="wrap_content"
-   		            android:layout_margin="10dp"
-   		            android:layout_alignParentBottom="true"
-   		            android:src="@drawable/robotrulesbeep" />
    		    </LinearLayout>
    		    <LinearLayout
    		        android:id="@+id/LeftLayout"
@@ -77,13 +49,51 @@ android:layout_height="match_parent" >
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
    		            android:layout_margin="10dp"
+   		            android:background="@drawable/robotrulesup"
    		            android:src="@drawable/robotrulesup" />
    		        <ImageButton
    		            android:id="@+id/ImageButtonDown"
    		            android:layout_width="wrap_content"
    		            android:layout_height="wrap_content"
    		            android:layout_margin="10dp"
+   		            android:background="@drawable/robotrulesdown"
    		            android:src="@drawable/robotrulesdown" />
    			</LinearLayout>
 		</RelativeLayout>
+		<LinearLayout
+   		        android:id="@+id/CenterLayout"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="match_parent"
+   		        android:layout_alignParentBottom="true"
+   		        android:layout_centerHorizontal="true"
+   		        android:gravity="bottom"
+   		        android:orientation="horizontal" >
+   		        <ToggleButton
+   		            android:id="@+id/ImageButtonLight"
+   		            android:layout_width="wrap_content"
+   		            android:layout_height="wrap_content"
+   		            android:layout_margin="10dp"
+   		            android:textColor="@android:color/transparent"
+   		            android:layout_alignParentBottom="true"
+   		            android:background="@drawable/robotruleslight"
+   		            android:src="@drawable/robotruleslight" />
+   		        <ImageButton
+   		        	android:id="@+id/ImageButtonStop"
+   		        	android:layout_width="wrap_content"
+   		        	android:layout_height="wrap_content"
+	   		        android:layout_margin="10dp"
+	   		        android:textColor="@android:color/transparent"
+	   		        android:layout_alignParentBottom="true"
+	   		        android:background="@drawable/robotrulesstop"
+	   		        android:src="@drawable/robotrulesstop" />
+   		        <ToggleButton
+   		            android:id="@+id/ImageButtonBeep"
+   		            android:layout_width="wrap_content"
+   		            android:layout_height="wrap_content"
+   		            android:layout_margin="10dp"
+	   		        android:textColor="@android:color/transparent"
+   		            android:layout_alignParentBottom="true"
+   		            android:background="@drawable/robotrulesbeep"
+   		            android:src="@drawable/robotrulesbeep" />
+		</LinearLayout>
 </RelativeLayout>

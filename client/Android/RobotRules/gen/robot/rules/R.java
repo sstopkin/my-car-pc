@@ -12,24 +12,29 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int robotrulesdown=0x7f020001;
-        public static final int robotrulesleft=0x7f020002;
-        public static final int robotrulesright=0x7f020003;
-        public static final int robotrulesstop=0x7f020004;
-        public static final int robotrulesup=0x7f020005;
+        public static final int robotrulesbeep=0x7f020001;
+        public static final int robotrulesdown=0x7f020002;
+        public static final int robotrulesleft=0x7f020003;
+        public static final int robotruleslight=0x7f020004;
+        public static final int robotrulesright=0x7f020005;
+        public static final int robotrulesstop=0x7f020006;
+        public static final int robotrulesup=0x7f020007;
     }
     public static final class id {
+        public static final int CenterLayout=0x7f05000b;
         public static final int CommonLayout=0x7f050004;
+        public static final int ImageButtonBeep=0x7f05000e;
         public static final int ImageButtonDown=0x7f05000a;
         public static final int ImageButtonLeft=0x7f050006;
+        public static final int ImageButtonLight=0x7f05000c;
         public static final int ImageButtonRight=0x7f050007;
+        public static final int ImageButtonStop=0x7f05000d;
         public static final int ImageButtonUp=0x7f050009;
         public static final int LeftLayout=0x7f050008;
         public static final int RightLayout=0x7f050005;
         public static final int button1=0x7f050002;
         public static final int editText1=0x7f050001;
         public static final int textView1=0x7f050000;
-        public static final int toggleButton1=0x7f05000b;
         public static final int webView1=0x7f050003;
     }
     public static final class layout {
