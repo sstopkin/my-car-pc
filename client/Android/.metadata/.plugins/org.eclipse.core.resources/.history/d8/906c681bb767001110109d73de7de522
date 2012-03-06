@@ -244,12 +244,12 @@ public class viewlay extends Activity {
 //    }
 
 
-//	public void onStop() {
-//		try {
-//			s.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	public void onStop() {
+		try {
+			s.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

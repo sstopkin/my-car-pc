@@ -63,6 +63,14 @@ android:layout_height="match_parent" >
    		        android:layout_centerHorizontal="true"
    		        android:gravity="bottom"
    		        android:orientation="horizontal" >
+   		        <ToggleButton
+   		            android:id="@+id/ImageButtonLight"
+   		            android:layout_width="wrap_content"
+   		            android:layout_height="wrap_content"
+   		            android:layout_margin="10dp"
+   		            android:textColor="@android:color/transparent"
+   		            android:layout_alignParentBottom="true"
+   		            android:src="@drawable/robotruleslight" />
    		        <ImageButton
    		        	android:id="@+id/ImageButtonStop"
    		        	android:layout_width="wrap_content"
@@ -71,13 +79,13 @@ android:layout_height="match_parent" >
 	   		        android:textColor="@android:color/transparent"
 	   		        android:layout_alignParentBottom="true"
 	   		        android:src="@drawable/robotrulesstop" />
-   		           		        <ImageButton
-   		        	android:id="@+id/ImageButtonBeep"
-   		        	android:layout_width="wrap_content"
-   		        	android:layout_height="wrap_content"
-	   		        android:layout_margin="10dp"
+   		        <ToggleButton
+   		            android:id="@+id/ImageButtonBeep"
+   		            android:layout_width="wrap_content"
+   		            android:layout_height="wrap_content"
+   		            android:layout_margin="10dp"
 	   		        android:textColor="@android:color/transparent"
-	   		        android:layout_alignParentBottom="true"
-	   		        android:src="@drawable/robotrulesbeep" />
+   		            android:layout_alignParentBottom="true"
+   		            android:src="@drawable/robotrulesbeep" />
 		</LinearLayout>
 </RelativeLayout>
