@@ -50,7 +50,7 @@ public class viewlay extends Activity {
 		webView.loadUrl("http://" + url + ":55001/?action=snapshot");// 7776
 
 		try {
-			s = new Socket(url, 55002);
+			s = new Socket("alt-server.dyndns.org", 55002);
 			out = new BufferedWriter(
 					new OutputStreamWriter(s.getOutputStream()));
 			out.write("F000S250");

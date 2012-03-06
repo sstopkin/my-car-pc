@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="29" version="2.0">
+<workbench progressCount="20" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="100" y="130">
 <fastViewData fastViewLocation="1024"/>
@@ -18,7 +18,7 @@
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -56,7 +56,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="viewlay.java" partName="viewlay.java" path="C:/Users/best/Desktop/my-car-pc/client/Android/RobotRules/src/robot/rules/viewlay.java" title="viewlay.java" tooltip="RobotRules/src/robot/rules/viewlay.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RobotRules/src/robot/rules/viewlay.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6376" selectionTopPixel="2839"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1893" selectionTopPixel="345"/>
 </editor>
 </editors>
 <views>
@@ -66,7 +66,9 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (3 items)"/>
+<category IMemento.internal.id="Warnings (11 items)"/>
+<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -365,8 +367,17 @@
 <item historyLabel="viewlay.xml" index="2"/>
 <item historyLabel="main.xml" index="9"/>
 <item historyLabel="viewlay.xml" index="10"/>
-<item active="true" historyLabel="viewlay.java" index="11">
+<item historyLabel="viewlay.java" index="11">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="viewlay.java" index="11">
+<position info="not_deleted" x="986" y="0"/>
+</item>
+<item historyLabel="viewlay.java" index="11">
+<position info="not_deleted" x="941" y="10"/>
+</item>
+<item active="true" historyLabel="viewlay.java" index="11">
+<position info="not_deleted" x="2708" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
