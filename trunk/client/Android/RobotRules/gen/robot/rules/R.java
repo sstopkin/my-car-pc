@@ -23,12 +23,11 @@ public final class R {
     public static final class id {
         public static final int CenterLayout=0x7f05000b;
         public static final int CommonLayout=0x7f050004;
-        public static final int ImageButtonBeep=0x7f05000e;
+        public static final int ImageButtonBeep=0x7f05000d;
         public static final int ImageButtonDown=0x7f05000a;
         public static final int ImageButtonLeft=0x7f050006;
-        public static final int ImageButtonLight=0x7f05000c;
         public static final int ImageButtonRight=0x7f050007;
-        public static final int ImageButtonStop=0x7f05000d;
+        public static final int ImageButtonStop=0x7f05000c;
         public static final int ImageButtonUp=0x7f050009;
         public static final int LeftLayout=0x7f050008;
         public static final int RightLayout=0x7f050005;

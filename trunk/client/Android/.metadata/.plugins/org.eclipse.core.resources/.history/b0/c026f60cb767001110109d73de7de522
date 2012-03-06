@@ -71,13 +71,5 @@ android:layout_height="match_parent" >
 	   		        android:textColor="@android:color/transparent"
 	   		        android:layout_alignParentBottom="true"
 	   		        android:src="@drawable/robotrulesstop" />
-   		           		        <ImageButton
-   		        	android:id="@+id/ImageButtonBeep"
-   		        	android:layout_width="wrap_content"
-   		        	android:layout_height="wrap_content"
-	   		        android:layout_margin="10dp"
-	   		        android:textColor="@android:color/transparent"
-	   		        android:layout_alignParentBottom="true"
-	   		        android:src="@drawable/robotrulesbeep" />
 		</LinearLayout>
 </RelativeLayout>
