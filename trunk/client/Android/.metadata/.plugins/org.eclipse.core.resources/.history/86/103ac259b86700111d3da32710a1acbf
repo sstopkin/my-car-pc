@@ -44,13 +44,13 @@ public class viewlay extends Activity {
 		Intent intent = getIntent();
 		setContentView(R.layout.viewlay);
 		String url = intent.getStringExtra("url");
-		webView = (WebView) findViewById(R.id.webView1);
-		webView.setWebViewClient(new WebViewClient());
-		webView.getSettings().setJavaScriptEnabled(true);
-		webView.loadUrl("http://" + url + ":55001/?action=snapshot");// 7776
+		 webView = (WebView) findViewById(R.id.webView1);
+		 webView.setWebViewClient(new WebViewClient());
+		 webView.getSettings().setJavaScriptEnabled(true);
+		 webView.loadUrl("http://" + url + ":55001/?action=snapshot");//7776
 
 		try {
-			s = new Socket(url, 55002);
+			s = new Socket("alt-server.dyndns.org", 55002);
 			out = new BufferedWriter(
 					new OutputStreamWriter(s.getOutputStream()));
 			out.write("F000S250");
@@ -69,9 +69,9 @@ public class viewlay extends Activity {
 		buttonup = (ImageButton) findViewById(R.id.ImageButtonUp);
 		buttonbeep = (ImageButton) findViewById(R.id.ImageButtonBeep);
 		buttonstop = (ImageButton) findViewById(R.id.ImageButtonStop);
-
+		
 		buttonbeep.setOnTouchListener(new OnTouchListener() {
-
+			
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					beep_state = 1;
@@ -86,15 +86,13 @@ public class viewlay extends Activity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					mov_state = 0;
-					rot_state = 0;
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					mov_state = 0;
-					rot_state = 0;
 				}
 				return false;
 			}
 		});
-
+		
 		buttondown.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -138,6 +136,7 @@ public class viewlay extends Activity {
 				return false;
 			}
 		});
+		
 
 		ScheduledExecutorService timer = Executors
 				.newSingleThreadScheduledExecutor();
@@ -254,59 +253,32 @@ public class viewlay extends Activity {
 			}
 			break;
 		}
-		switch (beep_state) {
-		case 1:
-			try {
-				out.write("I001");
-				out.flush();
-			} catch (UnknownHostException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 0:
-			try {
-				out.write("I000");
-				out.flush();
-			} catch (UnknownHostException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		default:
-			break;
-		}
 
 	}
 
-	// public void timerSetup(){
-	// autoUpdate = new Timer();
-	// autoUpdate.schedule(new TimerTask() {
-	// @Override
-	// public void run() {
-	// runOnUiThread(new Runnable() {
-	// @Override
-	// public void run() {
-	// //Actions goes here
-	// webView.loadUrl(url);
-	// }
-	// });
-	// }
-	// }, 0, 500);//refresh rate time interval (ms)
-	// }
+//	 public void timerSetup(){
+//     autoUpdate = new Timer();
+//     autoUpdate.schedule(new TimerTask() {
+//      @Override
+//      public void run() {
+//       runOnUiThread(new Runnable() {
+//        @Override
+//     public void run() {
+//         //Actions goes here
+//         webView.loadUrl(url);
+//        }
+//       });
+//      }
+//     }, 0, 500);//refresh rate time interval (ms)
+//    }
 
-	// public void onStop() {
-	// try {
-	// s.close();
-	// } catch (IOException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
+
+//	public void onStop() {
+//		try {
+//			s.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }
