@@ -301,12 +301,12 @@ public class viewlay extends Activity {
 	// }, 0, 500);//refresh rate time interval (ms)
 	// }
 
-	 public void onStop() {
-	 try {
-	 s.close();
-	 } catch (IOException e) {
-	 // TODO Auto-generated catch block
-	 e.printStackTrace();
-	 }
-	 }
+	// public void onStop() {
+	// try {
+	// s.close();
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
 }
