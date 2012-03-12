@@ -66,7 +66,9 @@ void handle(char letter, int number)
       /* ��������� R */
     break;
     case 'I':
-      beep(100);
+        if (number==1){
+          beep(100);
+        }
     break;
     case 'S':
         /* ��������� S */
