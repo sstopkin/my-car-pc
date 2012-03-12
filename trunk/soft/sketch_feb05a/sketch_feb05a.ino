@@ -8,6 +8,7 @@ void setup(){
   pinMode(led8,OUTPUT);
   pinMode(led9,OUTPUT);
   pinMode(led10,OUTPUT);
+  pinMode(2,OUTPUT);
   Serial.begin(19200);
   Serial.println("i");
 }
@@ -17,7 +18,7 @@ void loop() {
     int i;
     for (i=0; i<4; i++)
     {
-        while (!(Serial.available())) /* можно добавить delay */ ;
+        while (!(Serial.available())) /* пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ delay */ ;
         data[i] = (char) (Serial.read());
         //Serial.print("I received: ");
         Serial.println(data[i], DEC);
@@ -40,26 +41,35 @@ void loop() {
     handle(data[0], numb);
 }
 
+void beep(unsigned int val){
+  analogWrite(2,30);
+  delay(val);
+  analogWrite(2,0);
+}
+
 void handle(char letter, int number)
 {
     switch(letter)
     {
     case 'F':
-        /* обработка F */
+        /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ F */
         digitalWrite(led8,HIGH);     
         analogWrite(led10,number);
         break;
     case 'B':
 
-        /* обработка B */
+        /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ B */
         break;
     case 'R':
       digitalWrite(led8,LOW);
       analogWrite(led10,number);
-      /* обработка R */
+      /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ R */
+    break;
+    case 'I':
+      beep(100);
     break;
     case 'S':
-        /* обработка S */
+        /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ S */
         if (number<250){
           digitalWrite(led7,HIGH);
           analogWrite(led9,250-number);
