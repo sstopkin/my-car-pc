@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Timer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -12,8 +13,10 @@ import java.util.concurrent.TimeUnit;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -33,7 +36,6 @@ public class viewlay extends Activity {
 	public int mov_state = 0;
 	public int rot_state = 0;
 	public int beep_state = 0;
-	ScheduledExecutorService timer1;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -149,7 +151,7 @@ public class viewlay extends Activity {
 
 		}, 10, Long.parseLong("500"), TimeUnit.MILLISECONDS);
 
-		timer1 = Executors
+		ScheduledExecutorService timer1 = Executors
 				.newSingleThreadScheduledExecutor();
 		timer1.scheduleAtFixedRate(new Runnable() {
 			public void run() {
@@ -283,21 +285,21 @@ public class viewlay extends Activity {
 
 	}
 
-//	 public void timerSetup(){
-//	 autoUpdate = new Timer();
-//	 autoUpdate.schedule(new TimerTask() {
-//	 @Override
-//	 public void run() {
-//	 runOnUiThread(new Runnable() {
-//	 @Override
-//	 public void run() {
-//	 //Actions goes here
-//	 webView.loadUrl(url);
-//	 }
-//	 });
-//	 }
-//	 }, 0, 500);//refresh rate time interval (ms)
-//	 }
+	// public void timerSetup(){
+	// autoUpdate = new Timer();
+	// autoUpdate.schedule(new TimerTask() {
+	// @Override
+	// public void run() {
+	// runOnUiThread(new Runnable() {
+	// @Override
+	// public void run() {
+	// //Actions goes here
+	// webView.loadUrl(url);
+	// }
+	// });
+	// }
+	// }, 0, 500);//refresh rate time interval (ms)
+	// }
 
 	 public void onStop() {
 	 try {
@@ -306,11 +308,5 @@ public class viewlay extends Activity {
 	 // TODO Auto-generated catch block
 	 e.printStackTrace();
 	 }
-	 }
-	 @Override
-	 public void onBackPressed() {
-		 timer1.shutdownNow();
-	     webView.stopLoading();
-	     return;
 	 }
 }
