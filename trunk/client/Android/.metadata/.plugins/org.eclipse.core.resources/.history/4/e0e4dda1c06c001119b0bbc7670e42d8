@@ -33,7 +33,6 @@ public class viewlay extends Activity {
 	public int mov_state = 0;
 	public int rot_state = 0;
 	public int beep_state = 0;
-	ScheduledExecutorService timer1;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -149,7 +148,7 @@ public class viewlay extends Activity {
 
 		}, 10, Long.parseLong("500"), TimeUnit.MILLISECONDS);
 
-		timer1 = Executors
+		ScheduledExecutorService timer1 = Executors
 				.newSingleThreadScheduledExecutor();
 		timer1.scheduleAtFixedRate(new Runnable() {
 			public void run() {
@@ -309,8 +308,7 @@ public class viewlay extends Activity {
 	 }
 	 @Override
 	 public void onBackPressed() {
-		 timer1.shutdownNow();
-	     webView.stopLoading();
+	     // do something on back.
 	     return;
 	 }
 }
