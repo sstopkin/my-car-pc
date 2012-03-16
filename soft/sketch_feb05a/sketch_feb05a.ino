@@ -8,7 +8,11 @@ void setup(){
   pinMode(led8,OUTPUT);
   pinMode(led9,OUTPUT);
   pinMode(led10,OUTPUT);
-  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  analogWrite(3,50);
+  delay(100);
+  analogWrite(3,0);
+
   Serial.begin(19200);
   Serial.println("i");
 }
@@ -42,9 +46,9 @@ void loop() {
 }
 
 void beep(unsigned int val){
-  analogWrite(2,30);
+  analogWrite(3,50);
   delay(val);
-  analogWrite(2,0);
+  analogWrite(3,0);
 }
 
 void handle(char letter, int number)
