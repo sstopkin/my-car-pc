@@ -149,7 +149,8 @@ public class viewlay extends Activity {
 
 		}, 10, Long.parseLong("500"), TimeUnit.MILLISECONDS);
 
-		timer1 = Executors.newSingleThreadScheduledExecutor();
+		timer1 = Executors
+				.newSingleThreadScheduledExecutor();
 		timer1.scheduleAtFixedRate(new Runnable() {
 			public void run() {
 				try {
@@ -282,18 +283,41 @@ public class viewlay extends Activity {
 
 	}
 
-	public void onStop() {
-		super.onStop();
-		try {
+//	 public void timerSetup(){
+//	 autoUpdate = new Timer();
+//	 autoUpdate.schedule(new TimerTask() {
+//	 @Override
+//	 public void run() {
+//	 runOnUiThread(new Runnable() {
+//	 @Override
+//	 public void run() {
+//	 //Actions goes here
+//	 webView.loadUrl(url);
+//	 }
+//	 });
+//	 }
+//	 }, 0, 500);//refresh rate time interval (ms)
+//	 }
+
+	 public void onStop() {
+	 try {
+	 s.close();
+	 } catch (IOException e) {
+	 // TODO Auto-generated catch block
+	 e.printStackTrace();
+	 }
+	 }
+	 @Override
+	 public void onBackPressed() {
+		 try {
 			this.out.flush();
 			this.out.close();
 			this.s.close();
-			this.webView.stopLoading();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		this.timer1.shutdownNow();
-		return;
-	}
+		}		 
+		 this.timer1.shutdownNow();
+	     return;
+	 }
 }
